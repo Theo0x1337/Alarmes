@@ -17,6 +17,7 @@ public class AlarmeGaz {
 			this.date = date;
 			this.localisation = localisation;
 			this.importance = importance;
+			this.type = type;
 		}
 	}
 

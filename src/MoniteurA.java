@@ -47,7 +47,7 @@ public class MoniteurA {
 
 	public void alerteIncendie(int size) {
 		// TODO Auto-generated method stub
-		System.out.println("Alerte radiation : "+ listeAlarmeIncendie.get(size-1) );
+		System.out.println("Alerte incendie : "+ listeAlarmeIncendie.get(size-1) );
 		
 	}
 
