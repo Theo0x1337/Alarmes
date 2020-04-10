@@ -1,4 +1,5 @@
 import java.util.EventListener;
+import java.util.GregorianCalendar;
 
 public class CapteursIncendie extends Capteurs {
 	
@@ -18,6 +19,10 @@ public class CapteursIncendie extends Capteurs {
 
 	public void setFumee(boolean fumee) {
 		this.fumee = fumee;
+		if(fumee == true) {
+			int importance = (int)(Math.random() * 2+1);
+			this.generateAlarmeIncendie(this.getLocalisation(), importance);
+		}
 	}
 
 	public int getIntensite() {
@@ -28,5 +33,9 @@ public class CapteursIncendie extends Capteurs {
 		this.intensite = intensite;
 	}
 	
+	
+	private AlarmeIncendie generateAlarmeIncendie(String local,int importance) {
+		return new AlarmeIncendie(new GregorianCalendar().getTime(),local,importance);
+	}
 	
 }
