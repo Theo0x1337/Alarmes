@@ -8,7 +8,7 @@ public class AlarmeRadiation {
 	private Date date;
 	private String localisation; 
 	private int importance;
-	private String niveau;
+	private int niveau;
 	
 	public AlarmeRadiation(Date date, String localisation, int importance, int niveau) {
 		super();
@@ -19,6 +19,7 @@ public class AlarmeRadiation {
 			this.date = date;
 			this.localisation = localisation;
 			this.importance = importance;
+			this.niveau = niveau;
 		}
 	}
 
@@ -34,13 +35,13 @@ public class AlarmeRadiation {
 		return importance;
 	}
 
-	public String getNiveau() {
+	public int getNiveau() {
 		return niveau;
 	}
 	
 	
 	public String toString() {
-		return "le "+this.date+" localisée : "+this.localisation+" d\'importance "+this.importance + "de niveau : "+this.niveau;
+		return "le "+this.date+" localisée : "+this.localisation+" d\'importance "+this.importance + " de niveau : "+this.niveau;
 	}
 	
 }
