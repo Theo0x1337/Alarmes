@@ -44,6 +44,11 @@ public class MoniteurB {
 	public void addAlarmeGaz(AlarmeGaz gaz) {
 		this.listeAlarmeGaz.add(gaz);
 	}
+
+	public void alerteRadiation(int size) {
+		// TODO Auto-generated method stub
+		System.out.println("Alerte radiation : "+ listeAlarmeRadiation.get(size) );
+	}
 	
 	
 	

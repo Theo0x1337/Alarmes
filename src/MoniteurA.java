@@ -44,6 +44,12 @@ public class MoniteurA {
 	public void addAlarmeIncendie(AlarmeIncendie incendie) {
 		this.listeAlarmeIncendie.add(incendie);
 	}
+
+	public void alerteIncendie(int size) {
+		// TODO Auto-generated method stub
+		System.out.println("Alerte radiation : "+ listeAlarmeIncendie.get(size) );
+		
+	}
 	
 	
 }
