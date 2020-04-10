@@ -36,4 +36,14 @@ public class MoniteurA {
 		return type;
 	}
 	
+	
+	public void addAlarmeGaz(AlarmeGaz gaz) {
+		this.listeAlarmeGaz.add(gaz);
+	}
+	
+	public void addAlarmeIncendie(AlarmeIncendie incendie) {
+		this.listeAlarmeIncendie.add(incendie);
+	}
+	
+	
 }
