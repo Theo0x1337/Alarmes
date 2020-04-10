@@ -1,32 +1,13 @@
-import java.util.GregorianCalendar;
+import java.util.Date;
 
-public class AlarmeIncendie {
+
+public class AlarmeIncendie implements AlerteIncendieListener{
+
+	@Override
+	public void receptionIncendie(Date dateApparition, String localisation, int importance) {
+		// TODO Auto-generated method stub
+		
+	}
 	
-	private GregorianCalendar date;
-	private String localisation; 
-	private int importance;
 	
-	public AlarmeIncendie(GregorianCalendar date, String localisation, int importance) {
-		super();
-		if(importance>3 || importance<1) {
-			System.out.println("Erreur de saisie !");
-		}
-		else {
-			this.date = date;
-			this.localisation = localisation;
-			this.importance = importance;
-		}
-	}
-
-	public GregorianCalendar getDate() {
-		return date;
-	}
-
-	public String getLocalisation() {
-		return localisation;
-	}
-
-	public int getImportance() {
-		return importance;
-	}
 }
