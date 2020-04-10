@@ -14,6 +14,10 @@ public class AlarmeRadiation implements AlerteRadiationListener{
 		AlarmeRadiation.seuil = seuil;
 	}
 	
+	public AlarmeRadiation() {
+		super();
+	}
+
 
 	@Override
 	public String receptionRadiation(Date dateApparition, String localisation, int niveau, int importance) {
