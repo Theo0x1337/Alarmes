@@ -1,11 +1,12 @@
+import java.util.EventListener;
 
 public class CapteursGaz extends Capteurs {
 	
 	public String type;
 	
 	
-	public CapteursGaz(int id,String localisation) {
-		super(id,localisation);
+	public CapteursGaz(int id,String localisation,EventListener e) {
+		super(id,localisation,e);
 		this.type = "";
 	}
 

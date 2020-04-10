@@ -1,11 +1,12 @@
+import java.util.EventListener;
 
 public class CapteursIncendie extends Capteurs {
 	
 	private boolean fumee;
 	private int intensite;
 	
-	public CapteursIncendie(int id,String local) {
-		super(id,local);
+	public CapteursIncendie(int id,String local,EventListener e) {
+		super(id,local,e);
 		this.fumee = false;
 		this.intensite = 0;
 	}
