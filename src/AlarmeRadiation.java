@@ -5,12 +5,12 @@ import java.util.GregorianCalendar;
 
 public class AlarmeRadiation {
 	
-	private GregorianCalendar date;
+	private Date date;
 	private String localisation; 
 	private int importance;
 	private String niveau;
 	
-	public AlarmeRadiation(GregorianCalendar date, String localisation, int importance, int niveau) {
+	public AlarmeRadiation(Date date, String localisation, int importance, int niveau) {
 		super();
 		if(importance>3 || importance<1 || niveau>100 || niveau<1) {
 			System.out.println("Erreur de saisie !");
@@ -22,7 +22,7 @@ public class AlarmeRadiation {
 		}
 	}
 
-	public GregorianCalendar getDate() {
+	public Date getDate() {
 		return date;
 	}
 

@@ -1,13 +1,14 @@
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class AlarmeGaz {
 
-	private GregorianCalendar date;
+	private Date date;
 	private String localisation; 
 	private int importance;
 	private String type;
 	
-	public AlarmeGaz(GregorianCalendar date, String localisation, int importance, String type) {
+	public AlarmeGaz(Date date, String localisation, int importance, String type) {
 		super();
 		if(importance>3 || importance<1) {
 			System.out.println("Erreur de saisie !");
@@ -19,7 +20,7 @@ public class AlarmeGaz {
 		}
 	}
 
-	public GregorianCalendar getDate() {
+	public Date getDate() {
 		return date;
 	}
 
