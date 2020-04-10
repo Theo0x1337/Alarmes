@@ -47,12 +47,12 @@ public class MoniteurB {
 
 	public void alerteRadiation(int size) {
 		// TODO Auto-generated method stub
-		System.out.println("Alerte radiation : "+ listeAlarmeRadiation.get(size) );
+		System.out.println("Alerte radiation : "+ listeAlarmeRadiation.get(size-1) );
 	}
 
 	public void alerteGaz(int size) {
 		// TODO Auto-generated method stub
-		System.out.println("Alerte gaz : "+ listeAlarmeGaz.get(size) );
+		System.out.println("Alerte gaz : "+ listeAlarmeGaz.get(size-1) );
 	}
 	
 	
