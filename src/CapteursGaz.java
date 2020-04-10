@@ -35,4 +35,14 @@ public class CapteursGaz extends Capteurs {
 		return new AlarmeGaz(new GregorianCalendar().getTime(),local,importance,type);
 	}
 	
+	
+	public void fireAlarmeRad() {
+		this.moniteurB.alerteRadiation(this.moniteurB.getListeAlarmeRadiation().size());
+	}
+	
+	
+	public void fireAlarmeIncendie() {
+		this.moniteurA.alerteIncendie(this.moniteurA.getListeAlarmeIncendie().size());
+	}
+	
 }

@@ -24,6 +24,7 @@ public class CapteursIncendie extends Capteurs {
 		if(fumee == true) {
 			int importance = (int)(Math.random() * 2+1);
 			this.moniteur.addAlarmeIncendie(this.generateAlarmeIncendie(this.getLocalisation(), importance));
+			this.fireAlarmeIncendie();
 		}
 	}
 
@@ -38,6 +39,11 @@ public class CapteursIncendie extends Capteurs {
 	
 	private AlarmeIncendie generateAlarmeIncendie(String local,int importance) {
 		return new AlarmeIncendie(new GregorianCalendar().getTime(),local,importance);
+	}
+	
+	
+	public void fireAlarmeIncendie() {
+		this.moniteur.alerteIncendie(this.moniteur.getListeAlarmeIncendie().size());
 	}
 	
 }

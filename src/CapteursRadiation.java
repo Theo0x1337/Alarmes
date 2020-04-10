@@ -27,6 +27,7 @@ public class CapteursRadiation extends Capteurs {
 		if(niveau > seuil) {
 			int importance = (int)(Math.random() * 2+1);
 			this.moniteur.addAlarmeRadiation(this.generateAlarmeRadiation(this.getLocalisation(),importance,this.niveau));
+			this.fireAlarmeRad();
 		}
 	}
 
@@ -35,6 +36,9 @@ public class CapteursRadiation extends Capteurs {
 	}
 	
 	
+	public void fireAlarmeRad() {
+		this.moniteur.alerteRadiation(this.moniteur.getListeAlarmeRadiation().size());
+	}
 	
 	
 }
