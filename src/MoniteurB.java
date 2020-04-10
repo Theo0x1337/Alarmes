@@ -36,7 +36,7 @@ public class MoniteurB {
 		return type;
 	}
 	
-	public void addAlarmeIncendie(AlarmeRadiation rad) {
+	public void addAlarmeRadiation(AlarmeRadiation rad) {
 		this.listeAlarmeRadiation.add(rad);
 	}
 	

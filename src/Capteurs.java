@@ -3,12 +3,10 @@ import java.util.EventListener;
 public abstract class Capteurs {
 	private int id;
 	private String localisation;
-	private EventListener ecoute;
 	
-	public Capteurs(int id, String local,EventListener e) {
+	public Capteurs(int id, String local) {
 		this.id = id;
 		this.localisation = local;
-		this.ecoute = e;
 	}
 	
 	
@@ -29,8 +27,5 @@ public abstract class Capteurs {
 	}
 	
 	
-	public void add(EventListener e) {
-		this.ecoute = e;
-	}
 	
 }

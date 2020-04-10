@@ -3,12 +3,17 @@ import java.util.GregorianCalendar;
 
 public class CapteursGaz extends Capteurs {
 	
-	public String type;
+	private String type;
+	private MoniteurA moniteurA;
+	private MoniteurB moniteurB;
+
 	
 	
-	public CapteursGaz(int id,String localisation,EventListener e) {
-		super(id,localisation,e);
+	public CapteursGaz(int id,String localisation,MoniteurA moniA, MoniteurB moniB) {
+		super(id,localisation);
 		this.type = "";
+		this.moniteurA = moniA;
+		this.moniteurB = moniB;
 	}
 
 
@@ -21,7 +26,7 @@ public class CapteursGaz extends Capteurs {
 		this.type = type;
 		if(type != "") {
 			int importance = (int)(Math.random() * 2+1);
-			this.generateAlarmeGaz(this.getLocalisation(), importance, this.type);
+			this.moniteurA.addAlarmeGaz(this.generateAlarmeGaz(this.getLocalisation(), importance, this.type));
 		}
 	}
 	

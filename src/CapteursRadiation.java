@@ -5,11 +5,15 @@ public class CapteursRadiation extends Capteurs {
 
 	private int niveau;
 	private int seuil;
+	private MoniteurB moniteur;
+
 	
-	public CapteursRadiation(int id,String localisation, EventListener e,int seuil) {
-		super(id,localisation,e);
+	
+	public CapteursRadiation(int id,String localisation,int seuil,MoniteurB moni) {
+		super(id,localisation);
 		this.niveau = 0;
 		this.seuil = seuil;
+		this.moniteur = moni;
 	}
 
 	public int getNiveau() {
@@ -22,7 +26,7 @@ public class CapteursRadiation extends Capteurs {
 		}
 		if(niveau > seuil) {
 			int importance = (int)(Math.random() * 2+1);
-			this.generateAlarmeRadiation(this.getLocalisation(),importance,this.niveau);
+			this.moniteur.addAlarmeRadiation(this.generateAlarmeRadiation(this.getLocalisation(),importance,this.niveau));
 		}
 	}
 

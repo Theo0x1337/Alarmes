@@ -5,11 +5,13 @@ public class CapteursIncendie extends Capteurs {
 	
 	private boolean fumee;
 	private int intensite;
+	private MoniteurA moniteur;
 	
-	public CapteursIncendie(int id,String local,EventListener e) {
-		super(id,local,e);
+	public CapteursIncendie(int id,String local,MoniteurA moni) {
+		super(id,local);
 		this.fumee = false;
 		this.intensite = 0;
+		this.moniteur = moni;
 	}
 	
 
@@ -21,7 +23,7 @@ public class CapteursIncendie extends Capteurs {
 		this.fumee = fumee;
 		if(fumee == true) {
 			int importance = (int)(Math.random() * 2+1);
-			this.generateAlarmeIncendie(this.getLocalisation(), importance);
+			this.moniteur.addAlarmeIncendie(this.generateAlarmeIncendie(this.getLocalisation(), importance));
 		}
 	}
 
