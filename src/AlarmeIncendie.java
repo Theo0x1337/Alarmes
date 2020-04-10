@@ -1,15 +1,17 @@
+
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class AlarmeIncendie {
 	
-	private GregorianCalendar date;
+	private Date date;
 	private String localisation; 
 	private int importance;
-	private String niveau;
 	
-	public AlarmeIncendie(GregorianCalendar date, String localisation, int importance, int niveau) {
+	
+	public AlarmeIncendie(Date date, String localisation, int importance) {
 		super();
-		if(importance>3 || importance<1 || niveau>100 || niveau<1) {
+		if(importance>3 || importance<1) {
 			System.out.println("Erreur de saisie !");
 		}
 		else {
@@ -19,7 +21,7 @@ public class AlarmeIncendie {
 		}
 	}
 
-	public GregorianCalendar getDate() {
+	public Date getDate() {
 		return date;
 	}
 
@@ -31,8 +33,4 @@ public class AlarmeIncendie {
 		return importance;
 	}
 
-	public String getNiveau() {
-		return niveau;
-	}
-	
 }
