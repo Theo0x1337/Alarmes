@@ -27,6 +27,9 @@ public class CapteursGaz extends Capteurs {
 		if(type != "") {
 			int importance = (int)(Math.random() * 2+1);
 			this.moniteurA.addAlarmeGaz(this.generateAlarmeGaz(this.getLocalisation(), importance, this.type));
+			this.moniteurB.addAlarmeGaz(this.generateAlarmeGaz(this.getLocalisation(), importance, this.type));
+			this.fireAlarmeGazB();
+			this.fireAlarmeGazA();
 		}
 	}
 	
@@ -36,13 +39,13 @@ public class CapteursGaz extends Capteurs {
 	}
 	
 	
-	public void fireAlarmeRad() {
-		this.moniteurB.alerteRadiation(this.moniteurB.getListeAlarmeRadiation().size());
+	public void fireAlarmeGazB() {
+		this.moniteurB.alerteGaz(this.moniteurB.getListeAlarmeGaz().size());
 	}
 	
 	
-	public void fireAlarmeIncendie() {
-		this.moniteurA.alerteIncendie(this.moniteurA.getListeAlarmeIncendie().size());
+	public void fireAlarmeGazA() {
+		this.moniteurA.alerteGaz(this.moniteurA.getListeAlarmeIncendie().size());
 	}
 	
 }

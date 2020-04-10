@@ -38,4 +38,9 @@ public class AlarmeRadiation {
 		return niveau;
 	}
 	
+	
+	public String toString() {
+		return "Alerte RADIATION le "+this.date+" localisée : "+this.localisation+" d\'importance "+this.importance + "de niveau : ";
+	}
+	
 }

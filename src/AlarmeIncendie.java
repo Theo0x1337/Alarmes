@@ -32,5 +32,9 @@ public class AlarmeIncendie {
 	public int getImportance() {
 		return importance;
 	}
+	
+	public String toString() {
+		return "Alerte INCENDIE le "+this.date+" localisée : "+this.localisation+" d\'importance "+this.importance;
+	}
 
 }
