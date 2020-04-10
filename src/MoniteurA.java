@@ -50,6 +50,11 @@ public class MoniteurA {
 		System.out.println("Alerte radiation : "+ listeAlarmeIncendie.get(size) );
 		
 	}
+
+	public void alerteGaz(int size) {
+		// TODO Auto-generated method stub
+		System.out.println("Alerte gaz : "+ listeAlarmeGaz.get(size) );
+	}
 	
 	
 }
