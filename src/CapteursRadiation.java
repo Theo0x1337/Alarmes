@@ -1,4 +1,5 @@
 import java.util.EventListener;
+import java.util.GregorianCalendar;
 
 public class CapteursRadiation extends Capteurs {
 
@@ -20,12 +21,13 @@ public class CapteursRadiation extends Capteurs {
 			this.niveau = niveau;
 		}
 		if(niveau > seuil) {
-			this.generateAlarmeRadiation();
+			int importance = (int)(Math.random() * 2+1);
+			this.generateAlarmeRadiation(this.getLocalisation(),importance,this.niveau);
 		}
 	}
 
-	private AlarmeRadiation generateAlarmeRadiation() {
-		return new AlarmeRadiation();
+	private AlarmeRadiation generateAlarmeRadiation(String local,int importance,int niveau) {
+		return new AlarmeRadiation(new GregorianCalendar().getTime(),local,importance,niveau);
 	}
 	
 	
