@@ -1,5 +1,6 @@
 import java.util.Date;
+import java.util.EventListener;
 
-public interface AlerteIncendieListener {
-	public void receptionIncendie(Date dateApparition, String localisation,int importance);
+public interface AlerteIncendieListener extends EventListener  {
+	public String receptionIncendie(Date dateApparition, String localisation,int importance);
 }
