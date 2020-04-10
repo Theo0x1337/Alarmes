@@ -10,6 +10,8 @@ public class main {
 	CapteursIncendie capteurIncendie = new CapteursIncendie(1,"cul",pompier);
 	CapteursRadiation capteurRadiation = new CapteursRadiation(1,"chatte",10,service_environnement);
 	
+	
+	capteurRadiation.setNiveau(50);
 		
 		
 	}
