@@ -3,16 +3,7 @@ import java.util.Date;
 
 public class AlarmeGaz implements AlerteGazListener{
 
-	static private String seuil;
 
-	public static String getSeuil() {
-		return seuil;
-	}
-
-	public static void setSeuil(String seuil) {
-		AlarmeGaz.seuil = seuil;
-	}
-	
 	public static ArrayList<String> listeGaz = new ArrayList<String>();
 	
 	public static void main(String[] args) {
@@ -21,6 +12,10 @@ public class AlarmeGaz implements AlerteGazListener{
 	    listeGaz.add("CO2");
 	    listeGaz.add("Autre");
 	  }
+	
+	public AlarmeGaz() {
+		super();
+	}
 	
 	@Override
 	public String receptionGaz(Date dateApparition, String localisation, int type, int importance) {
