@@ -34,7 +34,7 @@ public class AlarmeIncendie {
 	}
 	
 	public String toString() {
-		return "Alerte INCENDIE le "+this.date+" localisée : "+this.localisation+" d\'importance "+this.importance;
+		return "le "+this.date+" localisée : "+this.localisation+" d\'importance "+this.importance;
 	}
 
 }

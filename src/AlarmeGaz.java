@@ -38,7 +38,7 @@ public class AlarmeGaz {
 	
 	
 	public String toString() {
-		return "Alerte GAZ : "+this.date+" localisée : "+this.localisation+" d\'importance "+this.importance+ ", gaz detecté : "+this.type;
+		return this.date+" localisée : "+this.localisation+" d\'importance "+this.importance+ ", gaz detecté : "+this.type;
 	}
 
 }

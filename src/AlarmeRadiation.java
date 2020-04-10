@@ -40,7 +40,7 @@ public class AlarmeRadiation {
 	
 	
 	public String toString() {
-		return "Alerte RADIATION le "+this.date+" localisée : "+this.localisation+" d\'importance "+this.importance + "de niveau : ";
+		return "le "+this.date+" localisée : "+this.localisation+" d\'importance "+this.importance + "de niveau : "+this.niveau;
 	}
 	
 }
