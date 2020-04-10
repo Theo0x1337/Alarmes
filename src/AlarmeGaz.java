@@ -1,29 +1,41 @@
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.GregorianCalendar;
 
-public class AlarmeGaz implements AlerteGazListener{
+public class AlarmeGaz {
 
-
-	public static ArrayList<String> listeGaz = new ArrayList<String>();
+	private GregorianCalendar date;
+	private String localisation; 
+	private int importance;
+	private String type;
 	
-	public static void main(String[] args) {
-	    listeGaz.add("hydrogène");
-	    listeGaz.add("hélium");
-	    listeGaz.add("CO2");
-	    listeGaz.add("Autre");
-	  }
-	
-	public AlarmeGaz() {
+	public AlarmeGaz(GregorianCalendar date, String localisation, int importance, String type) {
 		super();
+		if(importance>3 || importance<1) {
+			System.out.println("Erreur de saisie !");
+		}
+		else {
+			this.date = date;
+			this.localisation = localisation;
+			this.importance = importance;
+		}
+	}
+
+	public GregorianCalendar getDate() {
+		return date;
+	}
+
+	public String getLocalisation() {
+		return localisation;
+	}
+
+	public int getImportance() {
+		return importance;
+	}
+
+	public String getType() {
+		return type;
 	}
 	
-	@Override
-	public String receptionGaz(Date dateApparition, String localisation, int type, int importance) {
-		// TODO Auto-generated method stub
-		return localisation+" ("+dateApparition+") : "+type + " " +importance+"/3";
-	}
 	
-	
-	
-	
+
+
 }
