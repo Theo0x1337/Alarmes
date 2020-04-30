@@ -1,47 +1,25 @@
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 
-public class AlarmeRadiation {
-	
-	private Date date;
-	private String localisation; 
-	private int importance;
+public class AlarmeRadiation extends Alarme {
+
 	private int niveau;
 	
-	public AlarmeRadiation(Date date, String localisation, int importance, int niveau) {
-		super();
-		if(importance>3 || importance<1 || niveau>100 || niveau<1) {
-			System.out.println("Erreur de saisie !");
-		}
-		else {
-			this.date = date;
-			this.localisation = localisation;
-			this.importance = importance;
-			this.niveau = niveau;
-		}
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public String getLocalisation() {
-		return localisation;
-	}
-
-	public int getImportance() {
-		return importance;
+	public AlarmeRadiation(int idCapteur,LocalDateTime date, String localisation, int importance, int niveau) {
+		super(idCapteur,date,localisation,importance);
+		this.niveau = niveau;
 	}
 
 	public int getNiveau() {
 		return niveau;
 	}
 	
-	
-	public String toString() {
-		return "le "+this.date+" localisée : "+this.localisation+" d\'importance "+this.importance + " de niveau : "+this.niveau;
+
+	@Override
+	public String getInfos() {
+		// TODO Auto-generated method stub
+		return "idAlarme : "+this.idAlarme+" associé au capteur : "+this.idCapteur+" à la date "+ this.date + " localisée "+this.localisation +", le niveau de radiations detecté est de "+this.niveau +" et est jugé d'importance "+this.importance;
 	}
 	
 }

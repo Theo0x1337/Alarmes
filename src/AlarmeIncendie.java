@@ -1,40 +1,19 @@
 
+import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
-public class AlarmeIncendie {
-	
-	private Date date;
-	private String localisation; 
-	private int importance;
+public class AlarmeIncendie extends Alarme {
 	
 	
-	public AlarmeIncendie(Date date, String localisation, int importance) {
-		super();
-		if(importance>3 || importance<1) {
-			System.out.println("Erreur de saisie !");
-		}
-		else {
-			this.date = date;
-			this.localisation = localisation;
-			this.importance = importance;
-		}
+	public AlarmeIncendie(int idCapteur,LocalDateTime date, String localisation, int importance) {
+		super(idCapteur,date,localisation,importance);
 	}
 
-	public Date getDate() {
-		return date;
-	}
 
-	public String getLocalisation() {
-		return localisation;
-	}
-
-	public int getImportance() {
-		return importance;
-	}
-	
-	public String toString() {
-		return "le "+this.date+" localisée : "+this.localisation+" d\'importance "+this.importance;
+	@Override
+	public String getInfos() {
+		// TODO Auto-generated method stub
+		return "idAlarme : "+this.idAlarme+" associé au capteur : "+this.idCapteur+" à la date "+ this.date + " localisée "+this.localisation + " et d'importance "+this.importance;
 	}
 
 }
