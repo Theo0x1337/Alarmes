@@ -18,6 +18,10 @@ public class main {
     g.alerteGaz(java.time.LocalDateTime.now(), 2, "Moutarde");
     i.alerteIncendie(java.time.LocalDateTime.now(), 3);
     
+    
+    fenSimulateurAlarme fen = new fenSimulateurAlarme();
+    
+    /*
     EventQueue.invokeLater(new Runnable(){
         @Override
         public void run(){
@@ -25,5 +29,6 @@ public class main {
         }
     });
 	}
-
+	*/
+	}
 }
