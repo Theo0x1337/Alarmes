@@ -1,15 +1,23 @@
-import java.util.EventListener;
+import javax.swing.event.EventListenerList;
+
 
 public abstract class Capteurs {
-	private int id;
-	private String localisation;
+	protected int id;
+	protected String localisation;
+	protected final EventListenerList events = new EventListenerList();
 	
-	public Capteurs(int id, String local) {
-		this.id = id;
+	
+	
+	public Capteurs(String local) {
+		this.id++;
 		this.localisation = local;
 	}
 	
 	
+	public EventListenerList getEvents() {
+		return events;
+	}
+
 	public int getId() {
 		return id;
 	}

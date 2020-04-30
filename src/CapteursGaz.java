@@ -1,51 +1,41 @@
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.EventListener;
 import java.util.GregorianCalendar;
 
 public class CapteursGaz extends Capteurs {
 	
-	private String type;
-	private MoniteurA moniteurA;
-	private MoniteurB moniteurB;
-
 	
+	public CapteursGaz(String local) {
+		super(local);
+	}
 	
-	public CapteursGaz(int id,String localisation,MoniteurA moniA, MoniteurB moniB) {
-		super(id,localisation);
-		this.type = "";
-		this.moniteurA = moniA;
-		this.moniteurB = moniB;
-	}
 
-
-	public String getType() {
-		return type;
-	}
-
-
-	public void setType(String type) {
-		this.type = type;
-		if(type != "") {
-			int importance = (int)(Math.random() * 2+1);
-			this.moniteurA.addAlarmeGaz(this.generateAlarmeGaz(this.getLocalisation(), importance, this.type));
-			this.moniteurB.addAlarmeGaz(this.generateAlarmeGaz(this.getLocalisation(), importance, this.type));
-			this.fireAlarmeGazB();
-			this.fireAlarmeGazA();
+	public AlarmeGaz alerteGaz(LocalDateTime localDateTime, int importance, String type) {
+		AlarmeGaz gaz = new AlarmeGaz(this.getId(),localDateTime,this.getLocalisation(),importance,type);
+		
+		
+		for(AlerteGazListener e : this.getAlarmesGaz()) {
+			e.receptionGaz(gaz);
 		}
+		
+		
+		return gaz;
+	}
+
+
+	public AlerteGazListener[] getAlarmesGaz() {
+        return this.events.getListeners(AlerteGazListener.class);
+    }
+	
+	
+	public void addAlerteGazListener(AlerteGazListener e) {
+		this.events.add(AlerteGazListener.class, e);
 	}
 	
 	
-	private AlarmeGaz generateAlarmeGaz(String local,int importance,String type) {
-		return new AlarmeGaz(new GregorianCalendar().getTime(),local,importance,type);
-	}
-	
-	
-	public void fireAlarmeGazB() {
-		this.moniteurB.alerteGaz(this.moniteurB.getListeAlarmeGaz().size());
-	}
-	
-	
-	public void fireAlarmeGazA() {
-		this.moniteurA.alerteGaz(this.moniteurA.getListeAlarmeIncendie().size());
-	}
+	public void removeAlerteGazListener(AlerteGazListener e) {
+        this.events.remove(AlerteGazListener.class, e);
+    }
 	
 }

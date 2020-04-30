@@ -1,49 +1,40 @@
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.EventListener;
-import java.util.GregorianCalendar;
 
 public class CapteursIncendie extends Capteurs {
 	
-	private boolean fumee;
-	private int intensite;
-	private MoniteurA moniteur;
 	
-	public CapteursIncendie(int id,String local,MoniteurA moni) {
-		super(id,local);
-		this.fumee = false;
-		this.intensite = 0;
-		this.moniteur = moni;
+	public CapteursIncendie(String local) {
+		super(local);
 	}
 	
 
-	public boolean isFumee() {
-		return fumee;
-	}
-
-	public void setFumee(boolean fumee) {
-		this.fumee = fumee;
-		if(fumee == true) {
-			int importance = (int)(Math.random() * 2+1);
-			this.moniteur.addAlarmeIncendie(this.generateAlarmeIncendie(this.getLocalisation(), importance));
-			this.fireAlarmeIncendie();
+	public AlarmeIncendie alerteIncendie(LocalDateTime date, int importance) {
+		AlarmeIncendie incend = new AlarmeIncendie(this.getId(),date,this.getLocalisation(),importance);
+		
+		
+		for(AlerteIncendieListener e : this.getAlarmesIncendie()) {
+			e.receptionIncendie(incend);
 		}
+		
+		
+		return incend;
 	}
 
-	public int getIntensite() {
-		return intensite;
-	}
 
-	public void setIntensite(int intensite) {
-		this.intensite = intensite;
+	public AlerteIncendieListener[] getAlarmesIncendie() {
+        return this.events.getListeners(AlerteIncendieListener.class);
+    }
+	
+	
+	public void addAlerteIncendieListener(AlerteIncendieListener e) {
+		this.events.add(AlerteIncendieListener.class, e);
 	}
 	
 	
-	private AlarmeIncendie generateAlarmeIncendie(String local,int importance) {
-		return new AlarmeIncendie(new GregorianCalendar().getTime(),local,importance);
-	}
-	
-	
-	public void fireAlarmeIncendie() {
-		this.moniteur.alerteIncendie(this.moniteur.getListeAlarmeIncendie().size());
-	}
+	public void removeAlerteIncendieListener(AlerteIncendieListener e) {
+        this.events.remove(AlerteIncendieListener.class, e);
+    }
 	
 }
