@@ -1,23 +1,21 @@
+import java.util.Date;
 
 public class main {
 
 	public static void main(String[] args) {
 	
-	MoniteurA pompier = new MoniteurA();
-	MoniteurB service_environnement = new MoniteurB();
-	
-	CapteursGaz capteurGaz = new CapteursGaz(1,"BatA",pompier,service_environnement);
-	CapteursIncendie capteurIncendie = new CapteursIncendie(1,"BatA",pompier);
-	CapteursRadiation capteurRadiation = new CapteursRadiation(1,"BatC",10,service_environnement);
+	CapteursGaz g = new CapteursGaz("Batiment A");
+	CapteursIncendie i = new CapteursIncendie("Batiment B");
 	
 	
-	capteurRadiation.setNiveau(50);
-		
-	
-	capteurIncendie.setFumee(true);
-	
-	
-	capteurGaz.setType("gaz moutarde");
+	Moniteur pompier  = new Moniteur("A");
+    Moniteur ecologie = new Moniteur("B");	
+    
+    i.addAlerteIncendieListener(pompier);
+    g.addAlerteGazListener(ecologie);
+    
+    g.alerteGaz(java.time.LocalDateTime.now(), 2, "Moutarde");
+    i.alerteIncendie(java.time.LocalDateTime.now(), 3);
 		
 	}
 
