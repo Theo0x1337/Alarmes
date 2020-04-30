@@ -1,9 +1,12 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
 import javax.swing.*;
 
-public class fenSimulateurAlarme extends JFrame {
+public class fenSimulateurAlarme extends JFrame implements ItemListener {
 	  private JPanel container = new JPanel();
 	  private Box left = Box.createVerticalBox();
       
@@ -16,9 +19,15 @@ public class fenSimulateurAlarme extends JFrame {
 	  private JLabel labelNiveau = new JLabel("Niveau d'importance :") ;
 	  private JComboBox comboNiveau = new JComboBox();
 	  
+	 
+	  private JPanel spe = new JPanel();
+	  private JLabel labelSpe;
+	  
 	  private JButton bouton = new JButton("Valider");
 	  
-	  public fenSimulateurAlarme(){
+	  
+	  
+	  public fenSimulateurAlarme() {
 		//fenetre
 	    this.setTitle("Simulateur alarme");
 	    this.setSize(800, 500);
@@ -40,6 +49,7 @@ public class fenSimulateurAlarme extends JFrame {
 	    JPanel type = new JPanel();
 	    type.add(labelType);
 	    type.add(comboType);
+	    setAction();
 	    
 	    //Niveau importance
 	    comboNiveau.setPreferredSize(new Dimension(100, 20));
@@ -57,10 +67,34 @@ public class fenSimulateurAlarme extends JFrame {
 	    left.add(batiment);
 	    left.add(type);
 	    left.add(niveau);
+
 	    left.add(panBout);
 	    container.add(left, BorderLayout.CENTER);
 	    this.setContentPane(container);
-	    this.setVisible(true);            
+	    this.setVisible(true);        
+	    
 	  }   
 
+	  private void setAction()
+	    {
+		  comboType.addItemListener(this);
+	    }
+	 
+	  public void itemStateChanged(ItemEvent ie)
+	    {
+	        String getItem = (String)comboType.getSelectedItem();
+	        
+	        if(getItem.equals("Gaz"))
+	            System.out.println("cest un gaz");
+	        else if(getItem.equals("Radiation")) {
+	        	System.out.println("cest un radiasion");
+	        	labelSpe.setText("Niveau de radiation :");
+	        	spe.add(labelSpe);
+	        	left.add(spe);
+	        }
+	        else if(getItem.equals("Incendie"))
+	            System.out.println("il fé cho");
+	        
+	    }
+	  
 }
