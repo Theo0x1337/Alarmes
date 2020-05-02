@@ -21,5 +21,10 @@ public class AlarmeGaz extends Alarme {
 		// TODO Auto-generated method stub
 		return "idAlarme : "+this.idAlarme+" associé au capteur : "+this.idCapteur+" à la date "+ this.date + " localisée "+this.localisation +", le gaz detecté est "+this.type +" et est jugé d'importance "+this.importance;
 	}
+	
+	
+	public String toString() {
+		return "Alarme gaz id : "+ this.idAlarme;
+	}
 
 }
