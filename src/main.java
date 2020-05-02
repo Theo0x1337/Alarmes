@@ -21,14 +21,16 @@ public class main {
     
     fenSimulateurAlarme fen = new fenSimulateurAlarme();
     
-    /*
-    EventQueue.invokeLater(new Runnable(){
-        @Override
-        public void run(){
-            new Monitoring().setVisible(true);
-        }
-    });
+    
+    Monitoring mon = new Monitoring();
+    mon.addMoniteur(pompier);
+    mon.addMoniteur(ecologie);
+    
+    fen.addMonitor(mon);
+    
+   
+    
 	}
-	*/
-	}
+	
+	
 }
