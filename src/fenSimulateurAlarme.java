@@ -26,9 +26,16 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	 
 	  private JPanel spe = new JPanel();
 	  private JLabel labelSpe = new JLabel(" ");
-	  private JTextField speField = new JTextField("          ");
+	  private JTextField speField = new JTextField("",10);
 	  
 	  private JButton bouton = new JButton("Valider");
+	  
+	  JPanel batiment = new JPanel();
+	  JPanel type = new JPanel();
+	  JPanel niveau = new JPanel();
+	  JPanel panBout = new JPanel();
+	  
+	  private Monitoring monitors;
 	  
 	  
 	  public fenSimulateurAlarme() {
@@ -43,7 +50,6 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	    comboBat.setPreferredSize(new Dimension(100, 20));
 	    String[] tabBat = {"Option 1", "Option 2", "Option 3", "Option 4"}; //TODO : recuperer liste batiments
 	    comboBat = new JComboBox(tabBat);
-	    JPanel batiment = new JPanel();
 	    batiment.add(labelBat);
 	    batiment.add(comboBat);
 	    
@@ -51,7 +57,6 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	    comboType.setPreferredSize(new Dimension(100, 20));
 	    String[] tabType = {"Incendie", "Gaz", "Radiation"};
 	    comboType = new JComboBox(tabType);
-	    JPanel type = new JPanel();
 	    type.add(labelType);
 	    type.add(comboType);
 	    
@@ -59,48 +64,16 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	    comboNiveau.setPreferredSize(new Dimension(100, 20));
 	    String[] tabNiveau = {"1", "2", "3"};
 	    comboNiveau = new JComboBox(tabNiveau);
-	    JPanel niveau = new JPanel();
 	    niveau.add(labelNiveau);
 	    niveau.add(comboNiveau);
 	    
 	    //bouton valider
-	    JPanel panBout = new JPanel();
 	    panBout.add(bouton);
 	    
 	    
+	    bouton.addActionListener(this);
+	    comboType.addActionListener(this);
 	    
-	    comboType.addActionListener(new ActionListener(){  
-		    public void actionPerformed(ActionEvent e){  
-		    	Integer getBat = (Integer) comboBat.getSelectedIndex();
-		    	String getType = (String)comboType.getSelectedItem();
-		    	Integer getNiveau = (Integer)comboNiveau.getSelectedIndex();
-		        if(getType.equals("Gaz")) {
-		        	left.removeAll();
-	        		labelSpe.setText("Type de gaz :");
-	        		spe.add(labelSpe);
-	        		spe.add(speField);
-	        		left.add(batiment);
-	        		left.add(type);
-	        		left.add(niveau);
-	        		left.add(spe);
-	        		left.add(panBout);
-	        		
-	        		container.updateUI();
-		        }else if(getType.equals("Radiation")) {
-		        	left.removeAll();
-		        	labelSpe.setText("Niveau de radiation :");
-		        	spe.add(labelSpe);
-		        	spe.add(speField);
-		        	left.add(batiment);
-		    	    left.add(type);
-		    	    left.add(niveau);
-		        	left.add(spe);
-		    	    left.add(panBout);
-		        	
-		        	container.updateUI();
-		        } 
-	    }  
-	    });  
 	    
 	  //affichage
 	    left.add(batiment);
@@ -118,18 +91,56 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String getItem = (String)comboType.getSelectedItem();
-        
-        if(getItem.equals("Gaz"))
-            System.out.println("cest un gaz");
-        else if(getItem.equals("Radiation")) {
-        	System.out.println("cest un radiasion");
-        	labelSpe.setText("Niveau de radiation :");
-        	spe.add(labelSpe);
-        	left.add(spe);
-        }
-        else if(getItem.equals("Incendie"))
-            System.out.println("il f� cho");
+		if (e.getActionCommand().toString() == "comboBoxChanged") {
+	    	Integer getBat = (Integer) comboBat.getSelectedIndex();
+	    	String getType = (String)comboType.getSelectedItem();
+	    	Integer getNiveau = (Integer)comboNiveau.getSelectedIndex();
+	        if(getType.equals("Gaz")) {
+	        	left.removeAll();
+        		labelSpe.setText("Type de gaz :");
+        		spe.add(labelSpe);
+        		spe.add(speField);
+        		left.add(batiment);
+        		left.add(type);
+        		left.add(niveau);
+        		left.add(spe);
+        		left.add(panBout);
+        		
+        		container.updateUI();
+	        }else if(getType.equals("Radiation")) {
+	        	left.removeAll();
+	        	labelSpe.setText("Niveau de radiation :");
+	        	spe.add(labelSpe);
+	        	spe.add(speField);
+	        	left.add(batiment);
+	    	    left.add(type);
+	    	    left.add(niveau);
+	        	left.add(spe);
+	    	    left.add(panBout);
+	        	
+	        	container.updateUI();
+	        } 
+		}else {
+			String getType = (String)comboType.getSelectedItem();
+	        if(getType.equals("Gaz")) {
+	        	CapteursGaz cg = new CapteursGaz(comboBat.getSelectedItem().toString());
+	            Moniteur ecologie = new Moniteur("B");	
+	            cg.addAlerteGazListener(ecologie);
+	            this.monitors.addAlarmeSign(cg.alerteGaz(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()),speField.getText().toString()).toString());
+	        }else if(getType.equals("Radiation")) {
+	        	CapteursRadiation rad = new CapteursRadiation(comboBat.getSelectedItem().toString());
+	            Moniteur ecologie = new Moniteur("B");	
+	            rad.addAlerteRadiationListener(ecologie);
+	            this.monitors.addAlarmeSign(rad.alerteRad(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()), Integer.parseInt(speField.getText().toString())).toString());
+	        }else {
+	        	CapteursIncendie incend = new CapteursIncendie(comboBat.getSelectedItem().toString());
+	        }
+		}
 	}
 	  
+	
+	public void addMonitor(Monitoring mon) {
+		this.monitors = mon;
+	}
+	
 }
