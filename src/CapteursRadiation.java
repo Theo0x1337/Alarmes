@@ -29,7 +29,7 @@ public class CapteursRadiation extends Capteurs {
     }
 	
 	
-	public void addAlerteIncendieListener(AlerteRadiationListener e) {
+	public void addAlerteRadiationListener(AlerteRadiationListener e) {
 		this.events.add(AlerteRadiationListener.class, e);
 	}
 	
