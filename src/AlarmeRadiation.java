@@ -19,12 +19,13 @@ public class AlarmeRadiation extends Alarme {
 	@Override
 	public String getInfos() {
 		// TODO Auto-generated method stub
-		return "idAlarme : "+this.idAlarme+" associé au capteur : "+this.idCapteur+" à la date "+ this.date + " localisée "+this.localisation +", le niveau de radiations detecté est de "+this.niveau +" et est jugé d'importance "+this.importance;
+		return "idAlarme : "+this.idAlarme+" \nassocié au capteur : "+this.idCapteur+" \nà la date "+ this.date + " \nlocalisée "+this.localisation +", \nle niveau de radiations detecté est de "+this.niveau +" \net est jugé d'importance "+this.importance;
 	}
 	
 	
 	public String toString() {
 		return "Alarme radiation id : "+this.idAlarme;
 	}
+	
 	
 }

@@ -19,12 +19,12 @@ public class AlarmeGaz extends Alarme {
 	@Override
 	public String getInfos() {
 		// TODO Auto-generated method stub
-		return "idAlarme : "+this.idAlarme+" associé au capteur : "+this.idCapteur+" à la date "+ this.date + " localisée "+this.localisation +", le gaz detecté est "+this.type +" et est jugé d'importance "+this.importance;
+		return "idAlarme : "+this.idAlarme+" \nassocié au capteur : "+this.idCapteur+" \nà la date "+ this.date + " \nlocalisée "+this.localisation +", \nle gaz detecté est "+this.type +" \net est jugé d'importance "+this.importance;
 	}
-	
 	
 	public String toString() {
-		return "Alarme gaz id : "+ this.idAlarme;
+		return "Alarme gaz id : "+this.idAlarme;
 	}
+	
 
 }

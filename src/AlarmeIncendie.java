@@ -13,7 +13,14 @@ public class AlarmeIncendie extends Alarme {
 	@Override
 	public String getInfos() {
 		// TODO Auto-generated method stub
-		return "idAlarme : "+this.idAlarme+" associé au capteur : "+this.idCapteur+" à la date "+ this.date + " localisée "+this.localisation + " et d'importance "+this.importance;
+		return "idAlarme : "+this.idAlarme+" \nassocié au capteur : "+this.idCapteur+" \nà la date "+ this.date + " \nlocalisée "+this.localisation + " \net d'importance "+this.importance;
 	}
 
+	
+	
+	public String toString() {
+		return "Alarme incendie id : "+this.idAlarme;
+	}
+	
+	
 }

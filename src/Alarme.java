@@ -22,7 +22,9 @@ public abstract class Alarme implements EventListener {
 
 
 	public abstract String getInfos();
-
+	
+	
+	public abstract String toString();
 
 	public int getIdAlarme() {
 		return idAlarme;
