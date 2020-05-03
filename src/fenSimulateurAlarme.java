@@ -126,14 +126,23 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	        	CapteursGaz cg = new CapteursGaz(comboBat.getSelectedItem().toString());
 	            Moniteur ecologie = new Moniteur("B");	
 	            cg.addAlerteGazListener(ecologie);
-	            this.monitors.addAlarmeSign(cg.alerteGaz(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()),speField.getText().toString()).toString());
+	            AlarmeGaz ag = cg.alerteGaz(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()),speField.getText().toString());
+	            this.monitors.addAlarmeSign(ag.toString());
+	            this.monitors.addAlarmeEtiquette(ag.getInfos());
 	        }else if(getType.equals("Radiation")) {
 	        	CapteursRadiation rad = new CapteursRadiation(comboBat.getSelectedItem().toString());
 	            Moniteur ecologie = new Moniteur("B");	
 	            rad.addAlerteRadiationListener(ecologie);
-	            this.monitors.addAlarmeSign(rad.alerteRad(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()), Integer.parseInt(speField.getText().toString())).toString());
+	            AlarmeRadiation ar = rad.alerteRad(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()), Integer.parseInt(speField.getText().toString()));
+	            this.monitors.addAlarmeSign(ar.toString());
+	            this.monitors.addAlarmeEtiquette(ar.getInfos());
 	        }else {
-	        	CapteursIncendie incend = new CapteursIncendie(comboBat.getSelectedItem().toString());
+	        	CapteursIncendie feu = new CapteursIncendie(comboBat.getSelectedItem().toString());
+	            Moniteur ecologie = new Moniteur("A");	
+	            feu.addAlerteIncendieListener(ecologie);
+	            AlarmeIncendie ai = feu.alerteIncendie(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()));
+	            this.monitors.addAlarmeSign(ai.toString());
+	            this.monitors.addAlarmeEtiquette(ai.getInfos());
 	        }
 		}
 	}
