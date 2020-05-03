@@ -2,6 +2,7 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -15,8 +16,9 @@ public class Monitoring extends JFrame implements ListSelectionListener {
 	JPanel listeAlarme = new JPanel();
 	JPanel detailsAlarme = new JPanel();
 	JList liste;
-	JLabel etiquette = new JLabel("        	");
+	JTextArea etiquette = new JTextArea("Pas d'informations affichées",5,20);
     ArrayList<String> choix = new ArrayList<String>();
+    ArrayList<String> etiquettes = new ArrayList<String>();
     ArrayList<Moniteur> listeMoni = new ArrayList<Moniteur>();
     
   public Monitoring() {
@@ -24,7 +26,7 @@ public class Monitoring extends JFrame implements ListSelectionListener {
 	
     this.liste = new JList(choix.toArray());
 
-       
+    this.etiquette.setEditable(false);
     detailsAlarme.add(etiquette);
     listeAlarme.add(liste);
 
@@ -44,11 +46,9 @@ public class Monitoring extends JFrame implements ListSelectionListener {
   }
 
   public void valueChanged(ListSelectionEvent evt)  { 
-	  JOptionPane.showMessageDialog(this,
-			    "truc \nanother truc \nanother another truc",
-			    "Alarme déclenchée",
-			    JOptionPane.ERROR_MESSAGE);  }
-  
+	  this.etiquette.setText(this.etiquettes.get(liste.getSelectedIndex()));
+	  this.detailsAlarme.updateUI();
+  }
   
   public void addMoniteur(Moniteur mon) {
 	  this.listeMoni.add(mon);
@@ -63,10 +63,20 @@ public class Monitoring extends JFrame implements ListSelectionListener {
 	  this.listeAlarme.add(this.liste, BorderLayout.WEST);
 	  this.add(this.listeAlarme,BorderLayout.WEST);
 	  this.listeAlarme.updateUI();
+	  JOptionPane.showMessageDialog(this,
+	  	signature,
+	    "Alarme déclenchée",
+	    JOptionPane.ERROR_MESSAGE);  
   }
   
   public ArrayList<String> getChoix(){
 	  return this.choix;
   }
+
+public void addAlarmeEtiquette(String infos) {
+	// TODO Auto-generated method stub
+	this.etiquettes.add(infos);
+	
+}
   
 } 
