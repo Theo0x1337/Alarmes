@@ -119,7 +119,15 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	    	    left.add(panBout);
 	        	
 	        	container.updateUI();
-	        } 
+	        }else {
+	        	left.removeAll();
+	        	left.add(batiment);
+	    	    left.add(type);
+	    	    left.add(niveau);
+	    	    left.add(panBout);
+	        	
+	        	container.updateUI();
+	        }
 		}else {
 			String getType = (String)comboType.getSelectedItem();
 	        if(getType.equals("Gaz")) {
@@ -133,9 +141,16 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	        	CapteursRadiation rad = new CapteursRadiation(comboBat.getSelectedItem().toString());
 	            Moniteur ecologie = new Moniteur("B");	
 	            rad.addAlerteRadiationListener(ecologie);
-	            AlarmeRadiation ar = rad.alerteRad(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()), Integer.parseInt(speField.getText().toString()));
-	            this.monitors.addAlarmeSign(ar.toString());
-	            this.monitors.addAlarmeEtiquette(ar.getInfos());
+	            if(Integer.parseInt(speField.getText().toString()) >= 0 && Integer.parseInt(speField.getText().toString()) <= 100) {
+	            	AlarmeRadiation ar = rad.alerteRad(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()), Integer.parseInt(speField.getText().toString()));
+		            this.monitors.addAlarmeSign(ar.toString());
+		            this.monitors.addAlarmeEtiquette(ar.getInfos());
+	            }else {
+	            	JOptionPane.showMessageDialog(this,
+	            		  	"Les radiations doivent être comprises entre 0 et 100 !",
+	            		    "Erreur sur la valeur",
+	            		    JOptionPane.ERROR_MESSAGE);
+	            }
 	        }else {
 	        	CapteursIncendie feu = new CapteursIncendie(comboBat.getSelectedItem().toString());
 	            Moniteur ecologie = new Moniteur("A");	
