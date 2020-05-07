@@ -143,7 +143,7 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	            rad.addAlerteRadiationListener(ecologie);
 	            if (!speField.getText().matches("[0-9]+")){
 	            	JOptionPane.showMessageDialog(this,
-	            		  	"Le niveau de radiation doivent contenir un nombre !",
+	            		  	"Le niveau de radiation doit contenir un nombre !",
 	            		    "Erreur sur la valeur",
 	            		    JOptionPane.ERROR_MESSAGE);
 	            
