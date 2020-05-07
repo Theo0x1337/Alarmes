@@ -141,7 +141,14 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	        	CapteursRadiation rad = new CapteursRadiation(comboBat.getText());
 	            Moniteur ecologie = new Moniteur("B");	
 	            rad.addAlerteRadiationListener(ecologie);
-	            if(Integer.parseInt(speField.getText().toString()) >= 0 && Integer.parseInt(speField.getText().toString()) <= 100) {
+	            if (!speField.getText().matches("[0-9]+")){
+	            	JOptionPane.showMessageDialog(this,
+	            		  	"Le niveau de radiation doivent contenir un nombre !",
+	            		    "Erreur sur la valeur",
+	            		    JOptionPane.ERROR_MESSAGE);
+	            
+	            
+	            }else if(Integer.parseInt(speField.getText().toString()) >= 0 && Integer.parseInt(speField.getText().toString()) <= 100) {
 	            	AlarmeRadiation ar = rad.alerteRad(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()), Integer.parseInt(speField.getText().toString()));
 		            this.monitors.addAlarmeSign(ar.toString());
 		            this.monitors.addAlarmeEtiquette(ar.getInfos());
