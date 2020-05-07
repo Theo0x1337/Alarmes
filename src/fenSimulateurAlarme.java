@@ -15,7 +15,7 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	  private Box left = Box.createVerticalBox();
       
 	  private JLabel labelBat = new JLabel("Batiment :");
-	  private JComboBox comboBat = new JComboBox();
+	  private JTextField comboBat = new JTextField("",10);
 	  
 	  private JLabel labelType = new JLabel("Type d'alarme :") ;
 	  private JComboBox comboType = new JComboBox();
@@ -47,9 +47,9 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	    this.setLocationRelativeTo(null);
 
 	    //batiment
+
 	    comboBat.setPreferredSize(new Dimension(100, 20));
-	    String[] tabBat = {"Option 1", "Option 2", "Option 3", "Option 4"}; //TODO : recuperer liste batiments
-	    comboBat = new JComboBox(tabBat);
+	    
 	    batiment.add(labelBat);
 	    batiment.add(comboBat);
 	    
@@ -92,7 +92,7 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().toString() == "comboBoxChanged") {
-	    	Integer getBat = (Integer) comboBat.getSelectedIndex();
+	    	String getBat = comboBat.getText();
 	    	String getType = (String)comboType.getSelectedItem();
 	    	Integer getNiveau = (Integer)comboNiveau.getSelectedIndex();
 	        if(getType.equals("Gaz")) {
@@ -131,14 +131,14 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 		}else {
 			String getType = (String)comboType.getSelectedItem();
 	        if(getType.equals("Gaz")) {
-	        	CapteursGaz cg = new CapteursGaz(comboBat.getSelectedItem().toString());
+	        	CapteursGaz cg = new CapteursGaz(comboBat.getText());
 	            Moniteur ecologie = new Moniteur("B");	
 	            cg.addAlerteGazListener(ecologie);
 	            AlarmeGaz ag = cg.alerteGaz(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()),speField.getText().toString());
 	            this.monitors.addAlarmeSign(ag.toString());
 	            this.monitors.addAlarmeEtiquette(ag.getInfos());
 	        }else if(getType.equals("Radiation")) {
-	        	CapteursRadiation rad = new CapteursRadiation(comboBat.getSelectedItem().toString());
+	        	CapteursRadiation rad = new CapteursRadiation(comboBat.getText());
 	            Moniteur ecologie = new Moniteur("B");	
 	            rad.addAlerteRadiationListener(ecologie);
 	            if(Integer.parseInt(speField.getText().toString()) >= 0 && Integer.parseInt(speField.getText().toString()) <= 100) {
@@ -152,7 +152,7 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	            		    JOptionPane.ERROR_MESSAGE);
 	            }
 	        }else {
-	        	CapteursIncendie feu = new CapteursIncendie(comboBat.getSelectedItem().toString());
+	        	CapteursIncendie feu = new CapteursIncendie(comboBat.getText());
 	            Moniteur ecologie = new Moniteur("A");	
 	            feu.addAlerteIncendieListener(ecologie);
 	            AlarmeIncendie ai = feu.alerteIncendie(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()));
