@@ -1,6 +1,9 @@
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -20,15 +23,51 @@ import javax.swing.event.ListSelectionListener;
 public class Monitoring extends JFrame implements ListSelectionListener, ActionListener {
 	JPanel listeAlarme = new JPanel();
 	JPanel detailsAlarme = new JPanel(new GridBagLayout());
+	JPanel jpn = new JPanel();
+	JPanel jps = new JPanel();
 	JList liste;
+	JList jlisteArch;
+	JTextArea jt;
 	JTextArea etiquette = new JTextArea("Pas d'informations affichées",5,20);
     ArrayList<String> choix = new ArrayList<String>();
     //revoir ici mettre seulement choix avec les objets et appeler toString dessus et getInfos pour etiquettes
     ArrayList<String> etiquettes = new ArrayList<String>();
     ArrayList<Moniteur> listeMoni = new ArrayList<Moniteur>();
+    ArrayList<String> listeArchives = new ArrayList<String>();
+    ArrayList<String> listeArchivesInfo = new ArrayList<String>();
     
   public Monitoring() {
-   
+	 
+	  
+	 JMenuBar mb = new JMenuBar();
+	 
+	 JMenu file = new JMenu("File");
+	 JMenuItem saveArch = new JMenuItem("Sauvegarder les archives");
+	 file.add(saveArch);
+	 mb.add(file);
+	 
+	 
+	 JMenu gerer = new JMenu("Gerer");
+	 JMenuItem gererAlarme = new JMenuItem("Gerer les alarmes");
+	 gererAlarme.addActionListener(new GererListener(this));
+	 gerer.add(gererAlarme);
+	 mb.add(gerer);
+	
+	 
+	 JMenu archives = new JMenu("Archives");
+	 JMenuItem accesArchive = new JMenuItem("Acceder aux archives");
+	 
+	 ArchiveListener al = new ArchiveListener(this);
+	 
+	 accesArchive.addActionListener(al); 		 
+	 
+	 JMenuItem chargerArchive = new JMenuItem("Charger des archives");
+	 archives.add(accesArchive);
+	 archives.add(chargerArchive);
+	 
+	 mb.add(archives);
+	 
+	 this.setJMenuBar(mb);
 	
     this.liste = new JList(choix.toArray());
     detailsAlarme.add(etiquette);
@@ -101,6 +140,8 @@ public void addAlarmeEtiquette(String infos) {
 public void actionPerformed(ActionEvent e) {
 	int archiveIndex = this.liste.getSelectedIndex();
 	if (archiveIndex != -1) {
+		this.listeArchives.add(this.choix.get(archiveIndex));
+		this.listeArchivesInfo .add(this.etiquettes.get(archiveIndex));
 		this.choix.remove(archiveIndex);
 		this.etiquettes.remove(archiveIndex);
 		this.listeAlarme.remove(this.liste);
@@ -118,5 +159,14 @@ public void actionPerformed(ActionEvent e) {
 		this.listeAlarme.updateUI();
 	}
 }
+
+
+	public void clearAll() {
+		this.jpn.removeAll();
+		this.jps.removeAll();
+		this.detailsAlarme.removeAll();
+		this.listeAlarme.removeAll();
+	}
+
   
 } 
