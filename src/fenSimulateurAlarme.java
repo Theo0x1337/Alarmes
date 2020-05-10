@@ -42,7 +42,7 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 		 
 		//fenetre
 	    this.setTitle("Simulateur alarme");
-	    this.setSize(800, 500);
+	    this.setSize(400, 200);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null);
 
@@ -143,7 +143,7 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	            rad.addAlerteRadiationListener(ecologie);
 	            if (!speField.getText().matches("[0-9]+")){
 	            	JOptionPane.showMessageDialog(this,
-	            		  	"Le niveau de radiation doit contenir un nombre !",
+	            		  	"Le niveau de radiation doit être un nombre !",
 	            		    "Erreur sur la valeur",
 	            		    JOptionPane.ERROR_MESSAGE);
 	            
