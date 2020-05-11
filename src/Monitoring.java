@@ -64,6 +64,8 @@ public class Monitoring extends JFrame implements ListSelectionListener, ActionL
 	 accesArchive.addActionListener(al); 		 
 	 
 	 JMenuItem chargerArchive = new JMenuItem("Charger des archives");
+	 ChargerArchives charger = new ChargerArchives(this);
+	 chargerArchive.addActionListener(charger);
 	 archives.add(accesArchive);
 	 archives.add(chargerArchive);
 	 
