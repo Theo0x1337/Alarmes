@@ -43,6 +43,8 @@ public class Monitoring extends JFrame implements ListSelectionListener, ActionL
 	 
 	 JMenu file = new JMenu("File");
 	 JMenuItem saveArch = new JMenuItem("Sauvegarder les archives");
+	 SaveArchListener save = new SaveArchListener(this);
+	 saveArch.addActionListener(save);
 	 file.add(saveArch);
 	 mb.add(file);
 	 
