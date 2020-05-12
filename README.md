@@ -1,36 +1,39 @@
 # Gestion d'alarmes 
 
-<p align="center">
+<p>
     <img src="https://img.shields.io/badge/made%20with-Java-green">
     <img src = "https://img.shields.io/badge/version-1-success">
 </p>
 
 
 
-Une petite description du projet
+Ce projet est un projet scolaire, où le but est de simuler une interface de génération et de gestion d'alarmes en Java.
 
 ## Pour commencer
 
-Entrez ici les instructions pour bien débuter avec votre projet...
+Vous pouvez choisir de lancer le programme soit à l'aide d'un IDE supportant Java, soit en l'exécutant en ligne de commande.
+Bien sur vous êtes libre de cloner et modifier ce projet !
 
 ### Pré-requis
 
-Ce qu'il est requis pour commencer avec votre projet...
+Si vous souhaitez utiliser ce projet il vous faut : 
 
-- Programme 1
-- Programme 2
-- etc...
+- Java 1.8 ou supérieur installer sur votre machine
 
 ### Installation
 
-Les étapes pour installer votre programme....
+Pour utiliser le programme à l'aide d'un IDE :
 
-Dites ce qu'il faut faire...
+- Clonez et/ou faites un fork de ce projet
+- Ouvrez le dossier src/ dans votre IDE
+- Executez le fichier main.java
 
-_exemple_: Executez la commande ``telnet mapscii.me`` pour commencer ensuite [...]
 
+Pour utiliser le programme en ligne de commande :
 
-Ensuite vous pouvez montrer ce que vous obtenez au final...
+- Clonez le projet sur votre machine
+- Placez vous dans le dossier du projet
+- Exécutez les commandes : ```code javac main.java``` puis ```code java main
 
 ## Démarrage
 
