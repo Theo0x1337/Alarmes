@@ -49,7 +49,7 @@ Vous pouvez également lancer l'executable Java présent dans le dépôt
 ## Versions
 
 **Dernière version :** 1.0
-Liste des versions : [Cliquer pour afficher](https://github.com/Alarmes/tags)
+Liste des versions : [Cliquer pour afficher](https://github.com/TheoBernardin/Alarmes/tags)
 
 ## Auteurs
 * **Enzo Masson** _alias_ [@enzomasson25](https://github.com/enzomasson25)
