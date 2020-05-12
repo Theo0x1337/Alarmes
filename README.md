@@ -22,6 +22,10 @@ Si vous souhaitez utiliser ce projet il vous faut :
 
 ### Installation
 
+- Clonez sur votre machine ou forkez ce projet dans votre votre espace GitHub
+
+## Démarrage
+
 Pour utiliser le programme à l'aide d'un IDE :
 
 - Clonez et/ou faites un fork de ce projet
@@ -33,41 +37,27 @@ Pour utiliser le programme en ligne de commande :
 
 - Clonez le projet sur votre machine
 - Placez vous dans le dossier du projet
-- Exécutez les commandes : ```code javac main.java``` puis ```code java main
+- Exécutez les commandes : ```javac main.java``` puis ```code java main```
 
-## Démarrage
-
-Dites comment faire pour lancer votre projet
+Vous pouvez également lancer l'executable Java présent dans le dépôt
 
 ## Fabriqué avec
 
-Entrez les programmes/logiciels/ressources que vous avez utilisé pour développer votre projet
-
 _exemples :_
-* [Materialize.css](http://materializecss.com) - Framework CSS (front-end)
-* [Atom](https://atom.io/) - Editeur de textes
+* [Eclipse](https://www.eclipse.org/) - IDE
 
-## Contributing
-
-Si vous souhaitez contribuer, lisez le fichier [CONTRIBUTING.md](https://example.org) pour savoir comment le faire.
 
 ## Versions
-Listez les versions ici 
+
 _exemple :_
-**Dernière version stable :** 5.0
-**Dernière version :** 5.1
+**Dernière version :** 1.0
 Liste des versions : [Cliquer pour afficher](https://github.com/your/project-name/tags)
-_(pour le lien mettez simplement l'URL de votre projets suivi de ``/tags``)_
 
 ## Auteurs
-Listez le(s) auteur(s) du projet ici !
-* **Jhon doe** _alias_ [@outout14](https://github.com/outout14)
-
-Lisez la liste des [contributeurs](https://github.com/your/project/contributors) pour voir qui à aidé au projet !
-
-_(pour le lien mettez simplement l'URL de votre projet suivi de ``/contirubors``)_
+* **Enzo Masson** _alias_ [@enzomasson25](https://github.com/enzomasson25)
+* **Théo Bernardin** _alias_ [@TheoBernardin](https://github.com/TheoBernardin)
 
 ## License
 
-Ce projet est sous licence ``exemple: WTFTPL`` - voir le fichier [LICENSE.md](LICENSE.md) pour plus d'informations
+Ce projet est sous licence ``MIT`` - voir le fichier [LICENSE.md](LICENSE.md) pour plus d'informations
 
