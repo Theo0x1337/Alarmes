@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
@@ -34,6 +35,7 @@ public class GererListener extends MenuItemListener{
 		
 		this.jfm.liste = new JList(this.jfm.choix.toArray());
 		this.jfm.liste.addListSelectionListener(this.jfm);
+		this.jfm.scrollPane = new JScrollPane(this.jfm.liste);
 		this.jfm.detailsAlarme.add(this.jfm.etiquette);
 	    this.jfm.etiquette.setEditable(false);
 
@@ -48,7 +50,7 @@ public class GererListener extends MenuItemListener{
 	    
 
 	    this.jfm.detailsAlarme.add(but,c);
-	    this.jfm.listeAlarme.add(this.jfm.liste);
+	    this.jfm.listeAlarme.add(this.jfm.scrollPane);
 
 	    
 	    jfm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

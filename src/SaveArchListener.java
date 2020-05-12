@@ -25,7 +25,7 @@ public class SaveArchListener extends MenuItemListener {
     				System.out.println(infos.length);
     			
     					if (infos.length == 6) {
-    							obj.put("idAlarme", this.jfm.listeArchives.get(0));
+    							obj.put("idAlarme", infos[0]);
     							obj.put("idCapteur", infos[1]);
     							obj.put("date", infos[2]);
     							obj.put("localisation", infos[3]);
@@ -37,8 +37,8 @@ public class SaveArchListener extends MenuItemListener {
     							}
 
     					}else {
-    							obj.put("idAlarme", this.jfm.listeArchives.get(0));
-    							obj.put("idCpateur", infos[1]);
+    							obj.put("idAlarme", infos[0]);
+    							obj.put("idCapteur", infos[1]);
     							obj.put("date", infos[2]);
     							obj.put("localisation", infos[3]);
     							obj.put("importance", infos[4]);

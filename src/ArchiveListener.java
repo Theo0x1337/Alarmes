@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -27,7 +28,9 @@ public class ArchiveListener extends MenuItemListener implements ListSelectionLi
 		
 		this.jfm.jlisteArch = new JList(this.jfm.listeArchives.toArray());
 		this.jfm.jlisteArch.addListSelectionListener(this);
-		this.jfm.jpn.add(this.jfm.jlisteArch);
+		this.jfm.scrollPane = new JScrollPane(this.jfm.jlisteArch);
+		this.jfm.scrollPane.setPreferredSize(new Dimension(200,100));
+		this.jfm.jpn.add(this.jfm.scrollPane);
 		
 		this.jfm.jps.setPreferredSize(new Dimension(500,200));
 		
@@ -37,7 +40,8 @@ public class ArchiveListener extends MenuItemListener implements ListSelectionLi
 			this.jfm.jt = new JTextArea("Cliquez sur une archive dans la liste pour voir ses infos",5,20);
 		}
 		
-		this.jfm.jps.add(this.jfm.jt);
+		this.jfm.jt.setEditable(false);
+		this.jfm.jps.add(this.jfm.jt,BorderLayout.SOUTH);
 		
 		this.jfm.add(this.jfm.jpn,BorderLayout.NORTH);
 		this.jfm.add(this.jfm.jps,BorderLayout.SOUTH);

@@ -6,6 +6,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
@@ -25,6 +26,7 @@ public class Monitoring extends JFrame implements ListSelectionListener, ActionL
 	JPanel detailsAlarme = new JPanel(new GridBagLayout());
 	JPanel jpn = new JPanel();
 	JPanel jps = new JPanel();
+	JScrollPane scrollPane;
 	JList liste;
 	JList jlisteArch;
 	JTextArea jt;
@@ -74,6 +76,7 @@ public class Monitoring extends JFrame implements ListSelectionListener, ActionL
 	 this.setJMenuBar(mb);
 	
     this.liste = new JList(choix.toArray());
+	this.scrollPane = new JScrollPane(this.liste);
     detailsAlarme.add(etiquette);
     this.etiquette.setEditable(false);
 
@@ -87,8 +90,8 @@ public class Monitoring extends JFrame implements ListSelectionListener, ActionL
     c.anchor=GridBagConstraints.CENTER;//left align components after this point
     
 
-    detailsAlarme.add(but,c);
-    listeAlarme.add(liste);
+    this.detailsAlarme.add(but,c);
+    this.listeAlarme.add(this.scrollPane);
 
     
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -117,11 +120,12 @@ public class Monitoring extends JFrame implements ListSelectionListener, ActionL
   
   public void addAlarmeSign(String signature) {
 	  this.choix.add(signature);
-	  this.listeAlarme.remove(this.liste);
+	  this.listeAlarme.remove(this.scrollPane);
 	  this.liste = new JList(choix.toArray());
 	  this.remove(this.listeAlarme);
 	  this.liste.addListSelectionListener(this);
-	  this.listeAlarme.add(this.liste, BorderLayout.WEST);
+	  this.scrollPane = new JScrollPane(this.liste);
+	  this.listeAlarme.add(scrollPane, BorderLayout.WEST);
 	  this.add(this.listeAlarme,BorderLayout.WEST);
 	  this.listeAlarme.updateUI();
 	  JOptionPane.showMessageDialog(this,
@@ -148,11 +152,13 @@ public void actionPerformed(ActionEvent e) {
 		this.listeArchivesInfo .add(this.etiquettes.get(archiveIndex));
 		this.choix.remove(archiveIndex);
 		this.etiquettes.remove(archiveIndex);
-		this.listeAlarme.remove(this.liste);
+		this.scrollPane.remove(this.liste);
+		this.listeAlarme.remove(this.scrollPane);
 		this.liste = new JList(choix.toArray());
 		this.remove(this.listeAlarme);
 		this.liste.addListSelectionListener(this);
-		this.listeAlarme.add(this.liste, BorderLayout.WEST);
+		this.scrollPane = new JScrollPane(this.liste);
+		this.listeAlarme.add(this.scrollPane, BorderLayout.WEST);
 		this.add(this.listeAlarme,BorderLayout.WEST);
 		
 		
