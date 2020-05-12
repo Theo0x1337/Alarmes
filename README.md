@@ -1,8 +1,8 @@
 # Gestion d'alarmes 
 
 <p align="center">
-    <img src="https://img.shields.io/badge/made%20with-Java-green"
-        height="130">
+    <img src="https://img.shields.io/badge/made%20with-Java-green">
+    <img src = "https://img.shields.io/badge/version-1-success">
 </p>
 
 
