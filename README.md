@@ -37,21 +37,19 @@ Pour utiliser le programme en ligne de commande :
 
 - Clonez le projet sur votre machine
 - Placez vous dans le dossier du projet
-- Exécutez les commandes : ```javac main.java``` puis ```code java main```
+- Exécutez les commandes : ```javac main.java``` puis ```java main```
 
 Vous pouvez également lancer l'executable Java présent dans le dépôt
 
 ## Fabriqué avec
 
-_exemples :_
 * [Eclipse](https://www.eclipse.org/) - IDE
 
 
 ## Versions
 
-_exemple :_
 **Dernière version :** 1.0
-Liste des versions : [Cliquer pour afficher](https://github.com/your/project-name/tags)
+Liste des versions : [Cliquer pour afficher](https://github.com/Alarmes/tags)
 
 ## Auteurs
 * **Enzo Masson** _alias_ [@enzomasson25](https://github.com/enzomasson25)
