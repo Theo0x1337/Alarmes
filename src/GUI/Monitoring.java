@@ -1,3 +1,7 @@
+package GUI;
+import fonctio.Moniteur;
+import fonctio.Moniteur;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
@@ -20,6 +24,8 @@ import java.util.ArrayList;
 
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import MenuListener.*;
 
 public class Monitoring extends JFrame implements ListSelectionListener, ActionListener {
 	JPanel listeAlarme = new JPanel();
@@ -177,6 +183,117 @@ public void actionPerformed(ActionEvent e) {
 		this.detailsAlarme.removeAll();
 		this.listeAlarme.removeAll();
 	}
+
+	public JPanel getListeAlarme() {
+		return listeAlarme;
+	}
+
+	public void setListeAlarme(JPanel listeAlarme) {
+		this.listeAlarme = listeAlarme;
+	}
+
+	public JPanel getDetailsAlarme() {
+		return detailsAlarme;
+	}
+
+	public void setDetailsAlarme(JPanel detailsAlarme) {
+		this.detailsAlarme = detailsAlarme;
+	}
+
+	public JPanel getJpn() {
+		return jpn;
+	}
+
+	public void setJpn(JPanel jpn) {
+		this.jpn = jpn;
+	}
+
+	public JPanel getJps() {
+		return jps;
+	}
+
+	public void setJps(JPanel jps) {
+		this.jps = jps;
+	}
+
+	public JScrollPane getScrollPane() {
+		return scrollPane;
+	}
+
+	public void setScrollPane(JScrollPane scrollPane) {
+		this.scrollPane = scrollPane;
+	}
+
+	public JList getListe() {
+		return liste;
+	}
+
+	public void setListe(JList liste) {
+		this.liste = liste;
+	}
+
+	public JList getJlisteArch() {
+		return jlisteArch;
+	}
+
+	public void setJlisteArch(JList jlisteArch) {
+		this.jlisteArch = jlisteArch;
+	}
+
+	public JTextArea getJt() {
+		return jt;
+	}
+
+	public void setJt(JTextArea jt) {
+		this.jt = jt;
+	}
+
+	public JTextArea getEtiquette() {
+		return etiquette;
+	}
+
+	public void setEtiquette(JTextArea etiquette) {
+		this.etiquette = etiquette;
+	}
+
+	public ArrayList<String> getEtiquettes() {
+		return etiquettes;
+	}
+
+	public void setEtiquettes(ArrayList<String> etiquettes) {
+		this.etiquettes = etiquettes;
+	}
+
+	public ArrayList<Moniteur> getListeMoni() {
+		return listeMoni;
+	}
+
+	public void setListeMoni(ArrayList<Moniteur> listeMoni) {
+		this.listeMoni = listeMoni;
+	}
+
+	public ArrayList<String> getListeArchives() {
+		return listeArchives;
+	}
+
+	public void setListeArchives(ArrayList<String> listeArchives) {
+		this.listeArchives = listeArchives;
+	}
+
+	public ArrayList<String> getListeArchivesInfo() {
+		return listeArchivesInfo;
+	}
+
+	public void setListeArchivesInfo(ArrayList<String> listeArchivesInfo) {
+		this.listeArchivesInfo = listeArchivesInfo;
+	}
+
+	public void setChoix(ArrayList<String> choix) {
+		this.choix = choix;
+	}
+	
+	
+	
 
   
 } 

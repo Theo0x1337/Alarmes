@@ -1,3 +1,4 @@
+package GUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,6 +10,14 @@ import java.awt.event.ItemListener;
 import java.util.EventListener;
 
 import javax.swing.*;
+
+import Alarmes.AlarmeGaz;
+import Alarmes.AlarmeIncendie;
+import Alarmes.AlarmeRadiation;
+import capteurs.CapteursGaz;
+import capteurs.CapteursIncendie;
+import capteurs.CapteursRadiation;
+import fonctio.Moniteur;
 
 public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	  private JPanel container = new JPanel();
