@@ -1,7 +1,11 @@
+package capteurs;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.EventListener;
 import java.util.GregorianCalendar;
+
+import Alarmes.AlarmeGaz;
+import AlarmesListener.AlerteGazListener;
 
 public class CapteursGaz extends Capteurs {
 	
