@@ -1,7 +1,4 @@
 package GUI;
-import fonctio.Moniteur;
-import fonctio.Moniteur;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
@@ -26,6 +23,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import MenuListener.*;
+import moniteur.Moniteur;
 
 public class Monitoring extends JFrame implements ListSelectionListener, ActionListener {
 	JPanel listeAlarme = new JPanel();

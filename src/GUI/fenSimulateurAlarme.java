@@ -17,7 +17,7 @@ import Alarmes.AlarmeRadiation;
 import capteurs.CapteursGaz;
 import capteurs.CapteursIncendie;
 import capteurs.CapteursRadiation;
-import fonctio.Moniteur;
+import moniteur.Moniteur;
 
 public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	  private JPanel container = new JPanel();
