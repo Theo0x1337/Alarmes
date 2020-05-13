@@ -1,3 +1,10 @@
+package moniteur;
+import Alarmes.AlarmeGaz;
+import Alarmes.AlarmeIncendie;
+import Alarmes.AlarmeRadiation;
+import AlarmesListener.AlerteGazListener;
+import AlarmesListener.AlerteIncendieListener;
+import AlarmesListener.AlerteRadiationListener;
 
 public class Moniteur implements AlerteIncendieListener, AlerteGazListener, AlerteRadiationListener {
 
