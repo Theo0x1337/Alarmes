@@ -1,3 +1,6 @@
+package MenuListener;
+import GUI.Monitoring;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -9,6 +12,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import GUI.Monitoring;
 
 public class ArchiveListener extends MenuItemListener implements ListSelectionListener {
 		
@@ -22,29 +27,29 @@ public class ArchiveListener extends MenuItemListener implements ListSelectionLi
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		this.jfm.clearAll();
-		this.jfm.remove(this.jfm.listeAlarme);
-		this.jfm.remove(this.jfm.detailsAlarme);
-		this.jfm.jpn.setPreferredSize(new Dimension(500,100));
+		this.jfm.remove(this.jfm.getListeAlarme());
+		this.jfm.remove(this.jfm.getDetailsAlarme());
+		this.jfm.getJpn().setPreferredSize(new Dimension(500,100));
 		
-		this.jfm.jlisteArch = new JList(this.jfm.listeArchives.toArray());
-		this.jfm.jlisteArch.addListSelectionListener(this);
-		this.jfm.scrollPane = new JScrollPane(this.jfm.jlisteArch);
-		this.jfm.scrollPane.setPreferredSize(new Dimension(200,100));
-		this.jfm.jpn.add(this.jfm.scrollPane);
+		this.jfm.setJlisteArch(new JList(this.jfm.getListeArchives().toArray()));
+		this.jfm.getJlisteArch().addListSelectionListener(this);
+		this.jfm.setScrollPane(new JScrollPane(this.jfm.getJlisteArch()));
+		this.jfm.getScrollPane().setPreferredSize(new Dimension(200,100));
+		this.jfm.getJpn().add(this.jfm.getScrollPane());
 		
-		this.jfm.jps.setPreferredSize(new Dimension(500,200));
+		this.jfm.getJps().setPreferredSize(new Dimension(500,200));
 		
-		if(this.jfm.listeArchives.size() == 0) {
-			this.jfm.jt = new JTextArea("Pas d'informations affichées",5,20);
+		if(this.jfm.getListeArchives().size() == 0) {
+			this.jfm.setJt(new JTextArea("Pas d'informations affichées",5,20));
 		}else{
-			this.jfm.jt = new JTextArea("Cliquez sur une archive dans la liste pour voir ses infos",5,20);
+			this.jfm.setJt(new JTextArea("Cliquez sur une archive dans la liste pour voir ses infos",5,20));
 		}
 		
-		this.jfm.jt.setEditable(false);
-		this.jfm.jps.add(this.jfm.jt,BorderLayout.SOUTH);
+		this.jfm.getJt().setEditable(false);
+		this.jfm.getJps().add(this.jfm.getJt(),BorderLayout.SOUTH);
 		
-		this.jfm.add(this.jfm.jpn,BorderLayout.NORTH);
-		this.jfm.add(this.jfm.jps,BorderLayout.SOUTH);
+		this.jfm.add(this.jfm.getJpn(),BorderLayout.NORTH);
+		this.jfm.add(this.jfm.getJps(),BorderLayout.SOUTH);
 		
 		this.jfm.pack();
 		this.jfm.repaint();
@@ -55,8 +60,8 @@ public class ArchiveListener extends MenuItemListener implements ListSelectionLi
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		// TODO Auto-generated method stub
-		this.jfm.jt.setText(this.jfm.listeArchivesInfo.get(this.jfm.jlisteArch.getSelectedIndex()));
-		this.jfm.jps.updateUI();
+		this.jfm.getJt().setText(this.jfm.getListeArchivesInfo().get(this.jfm.getJlisteArch().getSelectedIndex()));
+		this.jfm.getJps().updateUI();
 	}
 
 }

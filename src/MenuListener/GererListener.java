@@ -1,3 +1,4 @@
+package MenuListener;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -13,6 +14,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
+import GUI.Monitoring;
+
 public class GererListener extends MenuItemListener{
 	
 	
@@ -25,19 +28,19 @@ public class GererListener extends MenuItemListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		this.jfm.clearAll();
-		this.jfm.remove(this.jfm.jpn);
-		this.jfm.jps.remove(this.jfm.jt);
-		this.jfm.remove(this.jfm.jps);
+		this.jfm.remove(this.jfm.getJpn());
+		this.jfm.getJps().remove(this.jfm.getJt());
+		this.jfm.remove(this.jfm.getJps());
 		
 		
-		this.jfm.listeAlarme.setPreferredSize(new Dimension(200,300));
-		this.jfm.detailsAlarme.setPreferredSize(new Dimension(300,300));
+		this.jfm.getListeAlarme().setPreferredSize(new Dimension(200,300));
+		this.jfm.getDetailsAlarme().setPreferredSize(new Dimension(300,300));
 		
-		this.jfm.liste = new JList(this.jfm.choix.toArray());
-		this.jfm.liste.addListSelectionListener(this.jfm);
-		this.jfm.scrollPane = new JScrollPane(this.jfm.liste);
-		this.jfm.detailsAlarme.add(this.jfm.etiquette);
-	    this.jfm.etiquette.setEditable(false);
+		this.jfm.setListe(new JList(this.jfm.getChoix().toArray()));
+		this.jfm.getListe().addListSelectionListener(this.jfm);
+		this.jfm.setScrollPane(new JScrollPane(this.jfm.getListe()));
+		this.jfm.getDetailsAlarme().add(this.jfm.getEtiquette());
+	    this.jfm.getEtiquette().setEditable(false);
 
 	    
 	    JButton but = new JButton("Archiver");
@@ -49,15 +52,15 @@ public class GererListener extends MenuItemListener{
 	    c.anchor=GridBagConstraints.CENTER;//left align components after this point
 	    
 
-	    this.jfm.detailsAlarme.add(but,c);
-	    this.jfm.listeAlarme.add(this.jfm.scrollPane);
+	    this.jfm.getDetailsAlarme().add(but,c);
+	    this.jfm.getListeAlarme().add(this.jfm.getScrollPane());
 
 	    
 	    jfm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	   
 	    
-	    this.jfm.add(this.jfm.listeAlarme,BorderLayout.WEST);
-	    this.jfm.add(this.jfm.detailsAlarme,BorderLayout.CENTER);
+	    this.jfm.add(this.jfm.getListeAlarme(),BorderLayout.WEST);
+	    this.jfm.add(this.jfm.getDetailsAlarme(),BorderLayout.CENTER);
 	    
 	    this.jfm.pack();	    
 	    this.jfm.repaint();

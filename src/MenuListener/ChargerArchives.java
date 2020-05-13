@@ -1,3 +1,4 @@
+package MenuListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,6 +11,8 @@ import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import GUI.Monitoring;
 
 public class ChargerArchives extends MenuItemListener{
 
@@ -31,19 +34,19 @@ public class ChargerArchives extends MenuItemListener{
 			
 			for (int i = 0; i < obj.length(); i++){
 				
-			    this.jfm.listeArchives.add(obj.getJSONObject(i).get("idAlarme").toString());
+			    this.jfm.getListeArchives().add(obj.getJSONObject(i).get("idAlarme").toString());
 			    if (obj.getJSONObject(i).has("type") == false) {
 				    infos = obj.getJSONObject(i).get("idAlarme").toString() + "\n"+obj.getJSONObject(i).get("idCapteur").toString()+"\n"+obj.getJSONObject(i).get("date")+"\n"+ obj.getJSONObject(i).get("localisation").toString()+"\n"+obj.getJSONObject(i).get("importance").toString();
 			    }else {
 				    infos = obj.getJSONObject(i).get("idAlarme").toString() + "\n"+obj.getJSONObject(i).get("idCapteur").toString()+"\n"+obj.getJSONObject(i).get("date")+"\n" +obj.getJSONObject(i).get("localisation").toString()+"\n"+obj.getJSONObject(i).get("type")+"\n"+obj.getJSONObject(i).get("importance").toString();
 			    }
 			    
-			    this.jfm.listeArchivesInfo.add(infos);
+			    this.jfm.getListeArchivesInfo().add(infos);
 			    
 			}
 			
-			System.out.println(this.jfm.listeArchives);
-			System.out.println(this.jfm.listeArchivesInfo);
+			System.out.println(this.jfm.getListeArchives());
+			System.out.println(this.jfm.getListeArchivesInfo());
 
 			
 		} catch (FileNotFoundException e1) {
