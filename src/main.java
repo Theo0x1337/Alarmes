@@ -1,6 +1,12 @@
 import java.awt.EventQueue;
 import java.util.Date;
 
+import GUI.Monitoring;
+import GUI.fenSimulateurAlarme;
+import capteurs.CapteursGaz;
+import capteurs.CapteursIncendie;
+import moniteur.Moniteur;
+
 public class main {
 
 	public static void main(String[] args) {
