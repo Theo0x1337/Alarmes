@@ -102,9 +102,10 @@ public class Monitoring extends JFrame implements ListSelectionListener, ActionL
    */
   public Monitoring() {
 	 
-	  
+	 //Menu 
 	 JMenuBar mb = new JMenuBar();
 	 
+	 //bouton file
 	 JMenu file = new JMenu("File");
 	 JMenuItem saveArch = new JMenuItem("Sauvegarder les archives");
 	 SaveArchListener save = new SaveArchListener(this);
@@ -112,14 +113,14 @@ public class Monitoring extends JFrame implements ListSelectionListener, ActionL
 	 file.add(saveArch);
 	 mb.add(file);
 	 
-	 
+	 //bouton gerer
 	 JMenu gerer = new JMenu("Gerer");
 	 JMenuItem gererAlarme = new JMenuItem("Gerer les alarmes");
 	 gererAlarme.addActionListener(new GererListener(this));
 	 gerer.add(gererAlarme);
 	 mb.add(gerer);
 	
-	 
+	 //bouton archives contenant acceder et charger
 	 JMenu archives = new JMenu("Archives");
 	 JMenuItem accesArchive = new JMenuItem("Acceder aux archives");
 	 
@@ -139,6 +140,8 @@ public class Monitoring extends JFrame implements ListSelectionListener, ActionL
 	
     this.liste = new JList(choix.toArray());
 	this.scrollPane = new JScrollPane(this.liste);
+	
+	//ajout de etiquette au details
     detailsAlarme.add(etiquette);
     this.etiquette.setEditable(false);
 
@@ -164,6 +167,8 @@ public class Monitoring extends JFrame implements ListSelectionListener, ActionL
 
     
     pack();
+    
+    //parametres de la frame 
     int frameWidth = 500;
     int frameHeight = 300;
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -176,6 +181,7 @@ public class Monitoring extends JFrame implements ListSelectionListener, ActionL
    * @param evt : evenement ListSelectionEvent qui reprensente le changement de valeur selectionne dans la jlist choix
    */
   public void valueChanged(ListSelectionEvent evt)  { 
+	  //changement d'�tiquette lorsqu'on selectionne une alarme
 	  this.etiquette.setText(this.etiquettes.get(liste.getSelectedIndex()));
 	  this.detailsAlarme.updateUI();
   }
@@ -204,6 +210,8 @@ public class Monitoring extends JFrame implements ListSelectionListener, ActionL
 	  this.listeAlarme.add(scrollPane, BorderLayout.WEST);
 	  this.add(this.listeAlarme,BorderLayout.WEST);
 	  this.listeAlarme.updateUI();
+	  
+	  //Message d'avertissement de nouvelle alarme
 	  JOptionPane.showMessageDialog(this,
 	  	signature,
 	    "Alarme déclenchée",
