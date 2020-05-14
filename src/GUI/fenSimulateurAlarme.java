@@ -145,7 +145,7 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	    comboType.addActionListener(this);
 	    
 	    
-	  //affichage
+	   //affichage
 	    left.add(batiment);
 	    left.add(type);
 	    left.add(niveau);
