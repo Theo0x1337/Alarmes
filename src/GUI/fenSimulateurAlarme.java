@@ -118,7 +118,6 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	    this.setLocationRelativeTo(null);
 
 	    //batiment
-
 	    comboBat.setPreferredSize(new Dimension(100, 20));
 	    
 	    batiment.add(labelBat);
@@ -169,6 +168,7 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	    	String getType = (String)comboType.getSelectedItem();
 	    	Integer getNiveau = (Integer)comboNiveau.getSelectedIndex();
 	        if(getType.equals("Gaz")) {
+	        	//Si on sélectionne un évenement Gaz on ajoute au formulaire une entré de texte pour renseigner le type de gaz
 	        	left.removeAll();
         		labelSpe.setText("Type de gaz :");
         		spe.add(labelSpe);
@@ -181,6 +181,7 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
         		
         		container.updateUI();
 	        }else if(getType.equals("Radiation")) {
+	        	//Si on sélectionne un évenement Radiation on ajoute au formulaire une entré de texte pour renseigner le niveau de radiation compris entre 0-100
 	        	left.removeAll();
 	        	labelSpe.setText("Niveau de radiation :");
 	        	spe.add(labelSpe);
@@ -203,18 +204,30 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	        }
 		}else {
 			String getType = (String)comboType.getSelectedItem();
+			
+			
 	        if(getType.equals("Gaz")) {
+	        	//Si c'est un Gaz
 	        	CapteursGaz cg = new CapteursGaz(comboBat.getText());
 	            Moniteur ecologie = new Moniteur("B");	
 	            cg.addAlerteGazListener(ecologie);
+	            
+	            //Creation de l'alarme de type Gaz
 	            AlarmeGaz ag = cg.alerteGaz(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()),speField.getText().toString());
+	            //ajout au moniteur de l'alerte
 	            this.monitors.addAlarmeSign(ag.toString());
 	            this.monitors.addAlarmeEtiquette(ag.getInfos());
+	            
 	        }else if(getType.equals("Radiation")) {
+	        	//Si c'est une radiation 
+	        	
 	        	CapteursRadiation rad = new CapteursRadiation(comboBat.getText());
 	            Moniteur ecologie = new Moniteur("B");	
 	            rad.addAlerteRadiationListener(ecologie);
-	            if (!speField.getText().matches("[0-9]+")){
+	            if (!speField.getText().matches("[0-9]+")){ 
+	            	//si le champ niveau de radiation contient autre chose que des chiffres
+	            	
+	            	//message erreur
 	            	JOptionPane.showMessageDialog(this,
 	            		  	"Le niveau de radiation doit Ãªtre un nombre !",
 	            		    "Erreur sur la valeur",
@@ -222,10 +235,17 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	            
 	            
 	            }else if(Integer.parseInt(speField.getText().toString()) >= 0 && Integer.parseInt(speField.getText().toString()) <= 100) {
+	            	//si la valeur du champ niveau de radiation est compris entre 0 et 100
+	            	
+	            	//Creation de l'alarme de type radiation 
 	            	AlarmeRadiation ar = rad.alerteRad(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()), Integer.parseInt(speField.getText().toString()));
-		            this.monitors.addAlarmeSign(ar.toString());
+	            	
+	            	//ajout au moniteur de l'alerte
+	            	this.monitors.addAlarmeSign(ar.toString());
 		            this.monitors.addAlarmeEtiquette(ar.getInfos());
-	            }else {
+	            }else { 
+	            	
+	            	//message erreur
 	            	JOptionPane.showMessageDialog(this,
 	            		  	"Les radiations doivent Ãªtre comprises entre 0 et 100 !",
 	            		    "Erreur sur la valeur",
@@ -235,7 +255,11 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	        	CapteursIncendie feu = new CapteursIncendie(comboBat.getText());
 	            Moniteur ecologie = new Moniteur("A");	
 	            feu.addAlerteIncendieListener(ecologie);
+	            
+	            //Creation de l'alarme de type incendie
 	            AlarmeIncendie ai = feu.alerteIncendie(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()));
+	            
+	            //ajout au moniteur de l'alerte
 	            this.monitors.addAlarmeSign(ai.toString());
 	            this.monitors.addAlarmeEtiquette(ai.getInfos());
 	        }
