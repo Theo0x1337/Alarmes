@@ -8,14 +8,28 @@ import GUI.Monitoring;
 import java.io.FileWriter;
 import java.io.IOException;
 
+
+/**
+ * Classe SaveArchListener heritant de MenutItemListener et permettant de sauvegarder les alarmes qui sont archivees
+ * @author Theo Bernardin / Enzo Masson
+ * @version 1.0
+ */
+
 public class SaveArchListener extends MenuItemListener {
 
+	
+	/** Creer un listener GererListener
+	 * 
+	 * @param jfm : Monitoring : l'interface graphique de gestion des alarmes
+	 */
 	public SaveArchListener(Monitoring jfm) {
 		super(jfm);
 	}
 
 	
-	
+	/** Redefinition de actionPerformed pour enregistrer les alarmes qui sont archivees dans un fichier
+	 * 
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if (this.jfm.getListeArchives().size() > 0) {
 		    JSONObject obj = new JSONObject();

@@ -14,15 +14,31 @@ import org.json.JSONObject;
 
 import GUI.Monitoring;
 
+
+/**
+ * Classe ChargerArchives heritant de MenutItemListener et permettant charger le fichier d'archive dans la liste des alarmes archivees du programme
+ * @author Theo Bernardin / Enzo Masson
+ * @version 1.0
+ */
+
+
 public class ChargerArchives extends MenuItemListener{
 
+	
+	
+	/** Creer un listener ChargerArchives
+	 * 
+	 * @param jfm : Monitoring : l'interface graphique de gestion des alarmes
+	 */
 	public ChargerArchives(Monitoring jfm) {
 		super(jfm);
 		// TODO Auto-generated constructor stub
 	}
 	
 	
-	
+	/** Redefinition de actionPerformed pour charger le fichier d'archives dans la liste des alarmes archivees
+	 * 
+	 */
 	public void actionPerformed(ActionEvent e) {
 		
 		try {

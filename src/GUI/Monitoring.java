@@ -25,23 +25,81 @@ import javax.swing.event.ListSelectionListener;
 import MenuListener.*;
 import moniteur.Moniteur;
 
+
+/**
+ * Classe Monitoring affichant graphiquement les actions possibles sur les alarmes
+ * 
+ * @author Theo Bernardin / Enzo Masson
+ * @version 1.0
+ */
+
+
 public class Monitoring extends JFrame implements ListSelectionListener, ActionListener {
+	/**
+	 * listeAlarme : JPanel contenant le scrollPane et la liste des alarmes generees
+	 */
 	JPanel listeAlarme = new JPanel();
+	/**
+	 * detailsAlarme : JPanel contenant la textArea ou les informations des alarmes sont affichees
+	 */
 	JPanel detailsAlarme = new JPanel(new GridBagLayout());
+	/**
+	 * jpn : JPanel contenant la liste des alarmes archivees
+	 */
 	JPanel jpn = new JPanel();
+	/**
+	 * jps : JPanel contenant le textArea affichant les informations des alarmes archivees
+	 */
 	JPanel jps = new JPanel();
+	/**
+	 * scrollPane : JScrollPane contenant les listes des alarmes et permettant le scroll lorsque celles ci deviennent trop grandes
+	 */
 	JScrollPane scrollPane;
+	/**
+	 * liste : JList contenant les alarmes generees
+	 */
 	JList liste;
+	/**
+	 * jlisteArch : JList contenant les alarmes qui ont ete archive
+	 */
 	JList jlisteArch;
+	/**
+	 * jt : JTextArea affichant les informations des alarmes archivees
+	 */
 	JTextArea jt;
+	/**
+	 * etiquette : JTextArea affichant les informations des alarmes qui n'ont pas ete archive
+	 */
 	JTextArea etiquette = new JTextArea("Pas d'informations affichées",5,20);
+	/**
+	 * choix : ArrayList de String contenant les alarmes generees pour construire l'attribut liste
+	 */
     ArrayList<String> choix = new ArrayList<String>();
     //revoir ici mettre seulement choix avec les objets et appeler toString dessus et getInfos pour etiquettes
+    
+    /**
+     * etiquettes : ArrayList de String contenant les informations des alarmes generees
+     */
     ArrayList<String> etiquettes = new ArrayList<String>();
+    /**
+     * listeMoni : ArrayList de Moniteur contenant les moniteurs branches sur l'interface graphique
+     */
     ArrayList<Moniteur> listeMoni = new ArrayList<Moniteur>();
+    /**
+     * listeArchives : ArrayList de String contenant les Alarmes qui ont ete archive
+     */
     ArrayList<String> listeArchives = new ArrayList<String>();
+    /**
+     * listeArchivesInfo : ArrayList de String contenant les informations des alarmes qui ont ete archive
+     */
     ArrayList<String> listeArchivesInfo = new ArrayList<String>();
     
+    
+    
+    
+  /** Creer un objet Monitoring afin de pouvoir gerer les alarmes graphiquement
+   *   
+   */
   public Monitoring() {
 	 
 	  
@@ -113,15 +171,29 @@ public class Monitoring extends JFrame implements ListSelectionListener, ActionL
     setVisible(true);
   }
 
+  
+  /** Redefinition de l'event valueChanged pour mettre a jour l'attribut liste et donc mettre a jour graphiquement les informations de l'alarme affichees sur l'interface
+   * @param evt : evenement ListSelectionEvent qui reprensente le changement de valeur selectionne dans la jlist choix
+   */
   public void valueChanged(ListSelectionEvent evt)  { 
 	  this.etiquette.setText(this.etiquettes.get(liste.getSelectedIndex()));
 	  this.detailsAlarme.updateUI();
   }
   
+  
+  /** Attache un moniteur a l'interface graphique
+   * 
+   * @param mon : Moniteur etant l'objet a attache a l'interface
+   */
   public void addMoniteur(Moniteur mon) {
 	  this.listeMoni.add(mon);
   }
   
+  
+  /** Ajoute une alarme dans la liste des alarmes qui ont ete genere et met a jour l'interface
+   * 
+   * @param signature : String representant la signature de l'alarme qui est recu
+   */
   public void addAlarmeSign(String signature) {
 	  this.choix.add(signature);
 	  this.listeAlarme.remove(this.scrollPane);
@@ -138,43 +210,59 @@ public class Monitoring extends JFrame implements ListSelectionListener, ActionL
 	    JOptionPane.ERROR_MESSAGE);  
   }
   
+  
+  /** Renvoi la liste des alarmes qui doivent etre affichee sur l'interface
+   * 
+   * @return ArrayList de string qui represente les alarmes qui ont ete generee et sont dans la liste 
+   */
   public ArrayList<String> getChoix(){
 	  return this.choix;
   }
 
-public void addAlarmeEtiquette(String infos) {
-	// TODO Auto-generated method stub
-	this.etiquettes.add(infos);
-	
-}
-
-@Override
-public void actionPerformed(ActionEvent e) {
-	int archiveIndex = this.liste.getSelectedIndex();
-	if (archiveIndex != -1) {
-		this.listeArchives.add(this.choix.get(archiveIndex));
-		this.listeArchivesInfo .add(this.etiquettes.get(archiveIndex));
-		this.choix.remove(archiveIndex);
-		this.etiquettes.remove(archiveIndex);
-		this.scrollPane.remove(this.liste);
-		this.listeAlarme.remove(this.scrollPane);
-		this.liste = new JList(choix.toArray());
-		this.remove(this.listeAlarme);
-		this.liste.addListSelectionListener(this);
-		this.scrollPane = new JScrollPane(this.liste);
-		this.listeAlarme.add(this.scrollPane, BorderLayout.WEST);
-		this.add(this.listeAlarme,BorderLayout.WEST);
+  
+  /** Ajoute les informations d'une alarme dans la liste des informations des alarmes
+   * 
+   * @param infos : String qui represente les informations de l'alarme
+   */
+	public void addAlarmeEtiquette(String infos) {
+		// TODO Auto-generated method stub
+		this.etiquettes.add(infos);
 		
-		
-		this.etiquette.setText("Pas d'informations affichées");
-		this.detailsAlarme.updateUI();
-		
-		
-		this.listeAlarme.updateUI();
 	}
-}
 
+	
+	/** Redefinition de actionPerformed pour gerer le clic sur le bouton archiver
+	 * 
+	 */
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		int archiveIndex = this.liste.getSelectedIndex();
+		if (archiveIndex != -1) {
+			this.listeArchives.add(this.choix.get(archiveIndex));
+			this.listeArchivesInfo .add(this.etiquettes.get(archiveIndex));
+			this.choix.remove(archiveIndex);
+			this.etiquettes.remove(archiveIndex);
+			this.scrollPane.remove(this.liste);
+			this.listeAlarme.remove(this.scrollPane);
+			this.liste = new JList(choix.toArray());
+			this.remove(this.listeAlarme);
+			this.liste.addListSelectionListener(this);
+			this.scrollPane = new JScrollPane(this.liste);
+			this.listeAlarme.add(this.scrollPane, BorderLayout.WEST);
+			this.add(this.listeAlarme,BorderLayout.WEST);
+			
+			
+			this.etiquette.setText("Pas d'informations affichées");
+			this.detailsAlarme.updateUI();
+			
+			
+			this.listeAlarme.updateUI();
+		}
+	}
 
+	/** Methode supprimant tous les composants de la fenetre graphique afin de mettre a jour entre la page gerer/archives
+	 * 
+	 */
 	public void clearAll() {
 		this.jpn.removeAll();
 		this.jps.removeAll();
@@ -182,6 +270,13 @@ public void actionPerformed(ActionEvent e) {
 		this.listeAlarme.removeAll();
 	}
 
+	
+	
+	/*
+	 * ---------------- GETTERS ET SETTERS POUR UTILISER LES ATTRIBUTS DANS LES DIFFERENTS PACKAGES -----------------
+	 */
+	
+	
 	public JPanel getListeAlarme() {
 		return listeAlarme;
 	}

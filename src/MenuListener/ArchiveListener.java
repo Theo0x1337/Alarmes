@@ -15,14 +15,27 @@ import javax.swing.event.ListSelectionListener;
 
 import GUI.Monitoring;
 
+
+/**
+ * Classe ArchiveListener heritant de MenutItemListener et permettant de gerer les clics sur le bouton acceder aux archives 
+ * @author Theo Bernardin / Enzo Masson
+ * @version 1.0
+ */
+
+
 public class ArchiveListener extends MenuItemListener implements ListSelectionListener {
 		
-	
+	/** Creer un listener ArchiveListener
+	 * 
+	 * @param jfm : Monitoring : l'interface graphique de gestion des alarmes
+	 */
 	public ArchiveListener(Monitoring jfm) {
 		super(jfm);
 	}
 	
-
+	/** Redefinition de actionPerformed pour afficher la page de gestion des alarmes archivees
+	 * 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -56,7 +69,9 @@ public class ArchiveListener extends MenuItemListener implements ListSelectionLi
 		
 	}
 
-
+	/** Redefinition de la methode valueChanged pour afficher les informations des alarmes archivees lorsqu'une d'entre elle est selectionnee
+	 * 
+	 */
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		// TODO Auto-generated method stub

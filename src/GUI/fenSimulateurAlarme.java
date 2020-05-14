@@ -19,34 +19,96 @@ import capteurs.CapteursIncendie;
 import capteurs.CapteursRadiation;
 import moniteur.Moniteur;
 
+
+
+/**
+ * Classe fenSimulateurAlarme permettant la generation de maniere graphique des differents types d'alarme
+ * 
+ * @author Theo Bernardin / Enzo Masson
+ * @version 1.0
+ */
+
+
 public class fenSimulateurAlarme extends JFrame implements ActionListener {
+	
+	  /**
+	   * container : JPanel contenant les composant de cette classe
+	   */
 	  private JPanel container = new JPanel();
+	  /**
+	   * left : Box 
+	   */
 	  private Box left = Box.createVerticalBox();
-      
+      /**
+       * labelBat : JLabel signifiant le type de champs qui se trouve a cote de celui ci
+       */
 	  private JLabel labelBat = new JLabel("Batiment :");
+	  /**
+	   * comboBat : JTextField permettant a l'utilisateur de saisir le batiment ou il veut simuler l'alarme
+	   */
 	  private JTextField comboBat = new JTextField("",10);
-	  
+	  /**
+	   * labetType : JLabel signifiant le type de champs qui se trouve a cote de celui ci
+	   */
 	  private JLabel labelType = new JLabel("Type d'alarme :") ;
+	  /**
+	   * comboType : JComboBox permettant a l'utilisateur de choisir le type d'alarme
+	   */
 	  private JComboBox comboType = new JComboBox();
-	  
+	  /**
+	   * labelNiveau : JLabel signifiant le type de champs qui se trouve a cote de celui ci
+	   */
 	  private JLabel labelNiveau = new JLabel("Niveau d'importance :") ;
+	  /**
+	   * comboNiveau : JComboBox permettant a l'utilisateur de choisir le niveau d'importance de l'alarme
+	   */
 	  private JComboBox comboNiveau = new JComboBox();
 	  
-	 
+	 /**
+	  * spe : JPanel contenant les types d'attributs speciaux pour les alarmes gaz et radiation
+	  */
 	  private JPanel spe = new JPanel();
+	  /**
+	   * labelSpe : JLabel signifiant le type de champs qui se trouve a cote de celui ci
+	   */
 	  private JLabel labelSpe = new JLabel(" ");
+	  /**
+	   * speField : JTextField permettant de renseignant l'attribut specifique au type gaz et radiation
+	   */
 	  private JTextField speField = new JTextField("",10);
 	  
+	  /**
+	   * bouton : JButton permettant de creer l'alarme
+	   */
 	  private JButton bouton = new JButton("Valider");
 	  
+	  /**
+	   * batiment : JPanel contenant les composants pour le batiment
+	   */
 	  JPanel batiment = new JPanel();
+	  /**
+	   * type : JPanel contenant les composants pour le type
+	   */
 	  JPanel type = new JPanel();
+	  /**
+	   * niveau : JPanel contenant les composants pour le niveau
+	   */
 	  JPanel niveau = new JPanel();
+	  /**
+	   * panBout : JPanel contenant les composants pour le bouton
+	   */
 	  JPanel panBout = new JPanel();
 	  
+	  /**
+	   * monitors : Monitoring l'interface graphique de gestion des alarmes pour pouvoir communiquer entre les deux fenetres
+	   */
 	  private Monitoring monitors;
 	  
 	  
+	  
+	  /** Creer l'interface graphique de simulation des alarmes
+	   * 
+	   */
 	  public fenSimulateurAlarme() {
 		 
 		//fenetre
@@ -97,7 +159,9 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	  }   
 
 	  
-
+	  /** Redefinition de la methode actionPerformed pour gerer le changement de selection dans la liste ou le clique sur le bouton valider
+	   * 
+	   */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().toString() == "comboBoxChanged") {
@@ -179,6 +243,10 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	}
 	  
 	
+	/** Ajoute un objet Monitoring  
+	 * 
+	 * @param mon : Monitoring, l'interface graphique de gestion d'alarme
+	 */
 	public void addMonitor(Monitoring mon) {
 		this.monitors = mon;
 	}

@@ -16,14 +16,29 @@ import javax.swing.SwingUtilities;
 
 import GUI.Monitoring;
 
+
+/**
+ * Classe GererListener heritant de MenutItemListener et permettant d'afficher la page de gestion des alarmes
+ * @author Theo Bernardin / Enzo Masson
+ * @version 1.0
+ */
+
 public class GererListener extends MenuItemListener{
 	
 	
-
+	/** Creer un listener GererListener
+	 * 
+	 * @param jfm : Monitoring : l'interface graphique de gestion des alarmes
+	 */
 	public GererListener(Monitoring jfm) {
 		super(jfm);
 	}
-
+	
+	
+	
+	/** Redefinition de actionPerformed pour afficher la page de gestion des alarmes
+	 * 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
