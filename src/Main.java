@@ -36,11 +36,8 @@ public class Main {
     mon.addMoniteur(pompier);
     mon.addMoniteur(ecologie);
     
+    //Ajout du moniteur à la fenetre principale
     fen.addMonitor(mon);
     
-   
-    
-	}
-	
-	
+	}	
 }
