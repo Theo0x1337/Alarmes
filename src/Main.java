@@ -35,7 +35,7 @@ public class Main {
     
     //Creation de la fenetre de monitoring
     MonitoringPompiers monPomp = new MonitoringPompiers("Monitoring POMPIERS");
-    MonitoringEcologie monEco = new MonitoringEcologie("MONITORING ECOLOGIE");
+    MonitoringEcologie monEco = new MonitoringEcologie("Monitoring ECOLOGIE");
     monPomp.addMoniteur(pompier);
     monEco.addMoniteur(ecologie);
     
