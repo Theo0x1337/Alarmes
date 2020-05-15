@@ -100,7 +100,7 @@ public class Monitoring extends JFrame implements ListSelectionListener, ActionL
   /** Creer un objet Monitoring afin de pouvoir gerer les alarmes graphiquement
    *   
    */
-  public Monitoring() {
+  public Monitoring(String titre) {
 	 
 	 //Menu 
 	 JMenuBar mb = new JMenuBar();
@@ -173,6 +173,7 @@ public class Monitoring extends JFrame implements ListSelectionListener, ActionL
     int frameHeight = 300;
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     this.setBounds((int) screenSize.getWidth() - frameWidth, 0, frameWidth, frameHeight);
+    this.setTitle(titre);
     setVisible(true);
   }
 
@@ -181,7 +182,7 @@ public class Monitoring extends JFrame implements ListSelectionListener, ActionL
    * @param evt : evenement ListSelectionEvent qui reprensente le changement de valeur selectionne dans la jlist choix
    */
   public void valueChanged(ListSelectionEvent evt)  { 
-	  //changement d'étiquette lorsqu'on selectionne une alarme
+	  //changement d'ï¿½tiquette lorsqu'on selectionne une alarme
 	  this.etiquette.setText(this.etiquettes.get(liste.getSelectedIndex()));
 	  this.detailsAlarme.updateUI();
   }
