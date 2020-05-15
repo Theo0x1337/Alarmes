@@ -103,6 +103,7 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	   * monitors : Monitoring l'interface graphique de gestion des alarmes pour pouvoir communiquer entre les deux fenetres
 	   */
 	  private Monitoring monitors;
+	  private Monitoring monitorsEco;
 	  
 	  
 	  
@@ -168,7 +169,7 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	    	String getType = (String)comboType.getSelectedItem();
 	    	Integer getNiveau = (Integer)comboNiveau.getSelectedIndex();
 	        if(getType.equals("Gaz")) {
-	        	//Si on sélectionne un évenement Gaz on ajoute au formulaire une entré de texte pour renseigner le type de gaz
+	        	//Si on sï¿½lectionne un ï¿½venement Gaz on ajoute au formulaire une entrï¿½ de texte pour renseigner le type de gaz
 	        	left.removeAll();
         		labelSpe.setText("Type de gaz :");
         		spe.add(labelSpe);
@@ -181,7 +182,7 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
         		
         		container.updateUI();
 	        }else if(getType.equals("Radiation")) {
-	        	//Si on sélectionne un évenement Radiation on ajoute au formulaire une entré de texte pour renseigner le niveau de radiation compris entre 0-100
+	        	//Si on sï¿½lectionne un ï¿½venement Radiation on ajoute au formulaire une entrï¿½ de texte pour renseigner le niveau de radiation compris entre 0-100
 	        	left.removeAll();
 	        	labelSpe.setText("Niveau de radiation :");
 	        	spe.add(labelSpe);
@@ -217,6 +218,8 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	            //ajout au moniteur de l'alerte
 	            this.monitors.addAlarmeSign(ag.toString());
 	            this.monitors.addAlarmeEtiquette(ag.getInfos());
+	            this.monitorsEco.addAlarmeSign(ag.toString());
+	            this.monitorsEco.addAlarmeEtiquette(ag.getInfos());
 	            
 	        }else if(getType.equals("Radiation")) {
 	        	//Si c'est une radiation 
@@ -241,8 +244,8 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	            	AlarmeRadiation ar = rad.alerteRad(java.time.LocalDateTime.now(), Integer.parseInt(comboNiveau.getSelectedItem().toString()), Integer.parseInt(speField.getText().toString()));
 	            	
 	            	//ajout au moniteur de l'alerte
-	            	this.monitors.addAlarmeSign(ar.toString());
-		            this.monitors.addAlarmeEtiquette(ar.getInfos());
+		            this.monitorsEco.addAlarmeSign(ar.toString());
+		            this.monitorsEco.addAlarmeEtiquette(ar.getInfos());
 	            }else { 
 	            	
 	            	//message erreur
@@ -273,6 +276,11 @@ public class fenSimulateurAlarme extends JFrame implements ActionListener {
 	 */
 	public void addMonitor(Monitoring mon) {
 		this.monitors = mon;
+	}
+
+
+	public void addMonitorEco(MonitoringEcologie monEco) {
+		this.monitorsEco = monEco;
 	}
 	
 }
