@@ -40,9 +40,14 @@ public class ChargerArchives extends MenuItemListener{
 	 * 
 	 */
 	public void actionPerformed(ActionEvent e) {
-		
+		String nameFich = "";
 		try {
-			File fr = new File("archives.json");
+			if(this.jfm.getTitle() == "Monitoring POMPIERS") {
+			    nameFich = "archivesPompiers.json";
+			}else {
+			    nameFich = "archivesEco.json";
+			}
+			File fr = new File(nameFich);
 			String jsonString = FileUtils.readFileToString(fr, "utf-8"); ; //assign your JSON String here
 			JSONArray obj = new JSONArray(jsonString);
 			

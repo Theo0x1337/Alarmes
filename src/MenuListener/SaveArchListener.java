@@ -35,8 +35,14 @@ public class SaveArchListener extends MenuItemListener {
 		    JSONObject obj = new JSONObject();
 		    String[] infos;
 		    FileWriter file = null;
+		    String nameFich = "";
+		    if(this.jfm.getTitle() == "Monitoring POMPIERS") {
+		    	nameFich = "archivesPompiers.json";
+		    }else {
+		    	nameFich = "archivesEco.json";
+		    }
             try {
-            	file = new FileWriter("archives.json");
+            	file = new FileWriter(nameFich);
             	file.write("[\n");
     			for (int i = 0;i<this.jfm.getListeArchivesInfo().size();i++) {
     				infos = this.jfm.getListeArchivesInfo().get(i).split("\n");
