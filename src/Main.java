@@ -1,4 +1,6 @@
 import GUI.Monitoring;
+import GUI.MonitoringEcologie;
+import GUI.MonitoringPompiers;
 import GUI.fenSimulateurAlarme;
 import capteurs.CapteursGaz;
 import capteurs.CapteursIncendie;
@@ -32,12 +34,14 @@ public class Main {
     fenSimulateurAlarme fen = new fenSimulateurAlarme();
     
     //Creation de la fenetre de monitoring
-    Monitoring mon = new Monitoring();
-    mon.addMoniteur(pompier);
-    mon.addMoniteur(ecologie);
+    MonitoringPompiers monPomp = new MonitoringPompiers("Monitoring POMPIERS");
+    MonitoringEcologie monEco = new MonitoringEcologie("MONITORING ECOLOGIE");
+    monPomp.addMoniteur(pompier);
+    monEco.addMoniteur(ecologie);
     
-    //Ajout du moniteur à la fenetre principale
-    fen.addMonitor(mon);
+    //Ajout du moniteur ï¿½ la fenetre principale
+    fen.addMonitor(monPomp);
+    fen.addMonitorEco(monEco);
     
 	}	
 }
