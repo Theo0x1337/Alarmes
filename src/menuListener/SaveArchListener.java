@@ -1,9 +1,9 @@
-package MenuListener;
+package menuListener;
 import java.awt.event.ActionEvent;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import GUI.Monitoring;
+import gui.Monitoring;
 
 import java.io.FileWriter;
 import java.io.IOException;

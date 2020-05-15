@@ -4,8 +4,8 @@ import java.util.Date;
 import java.util.EventListener;
 import java.util.GregorianCalendar;
 
-import Alarmes.AlarmeGaz;
-import AlarmesListener.AlerteGazListener;
+import alarmes.AlarmeGaz;
+import alarmesListener.AlerteGazListener;
 
 
 /**

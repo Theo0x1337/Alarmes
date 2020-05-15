@@ -1,4 +1,4 @@
-package MenuListener;
+package menuListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,7 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import GUI.Monitoring;
+import gui.Monitoring;
 
 
 /**

@@ -1,6 +1,4 @@
-package MenuListener;
-import GUI.Monitoring;
-
+package menuListener;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -13,7 +11,7 @@ import javax.swing.JTextArea;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import GUI.Monitoring;
+import gui.Monitoring;
 
 
 /**

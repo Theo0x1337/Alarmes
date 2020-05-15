@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import MenuListener.*;
+import menuListener.*;
 import moniteur.Moniteur;
 
 

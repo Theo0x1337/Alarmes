@@ -1,9 +1,9 @@
-import GUI.Monitoring;
-import GUI.MonitoringEcologie;
-import GUI.MonitoringPompiers;
-import GUI.fenSimulateurAlarme;
 import capteurs.CapteursGaz;
 import capteurs.CapteursIncendie;
+import gui.Monitoring;
+import gui.MonitoringEcologie;
+import gui.MonitoringPompiers;
+import gui.fenSimulateurAlarme;
 import moniteur.Moniteur;
 
 

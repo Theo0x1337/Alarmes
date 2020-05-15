@@ -1,4 +1,4 @@
-package MenuListener;
+package menuListener;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -14,7 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
-import GUI.Monitoring;
+import gui.Monitoring;
 
 
 /**

@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,9 +11,9 @@ import java.util.EventListener;
 
 import javax.swing.*;
 
-import Alarmes.AlarmeGaz;
-import Alarmes.AlarmeIncendie;
-import Alarmes.AlarmeRadiation;
+import alarmes.AlarmeGaz;
+import alarmes.AlarmeIncendie;
+import alarmes.AlarmeRadiation;
 import capteurs.CapteursGaz;
 import capteurs.CapteursIncendie;
 import capteurs.CapteursRadiation;
